@@ -1,0 +1,46 @@
+<div id="hamburger" (click)="open = !open" [ngClass]="{'open': open}">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="nav-bar">
+  <div class="title">Rewards</div>
+  <div class="profile"></div>
+</div>
+<div class="side-nav" [ngClass]="{'open': open}">
+  <div class="title-wrapper">
+    <div class="title">Rewards</div>
+  </div>
+
+  <ul>
+    <div class="link-wrapper"><div class="cover"><i class="fas fa-file-contract"></i></div><li>Applications</li></div>
+    <div class="link-wrapper"><div class="cover"><i class="fas fa-users"></i></div><li>Users</li></div>
+    <div class="link-wrapper"><div class="cover"><i class="fas fa-gift"></i></div><li>Rewards</li></div>
+<!--    <div class="link-wrapper"><div class="cover"><i class="fas fa-info"></i></div><li></li></div>-->
+    <div class="link-wrapper"><div class="cover"><i class="fas fa-unlock"></i></div><li>Logout</li></div>
+  </ul>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"
+          (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01" [ngbCollapse]="isCollapsed" (click)="isCollapsed = !isCollapsed">
+    <a class="navbar-brand" href="#">jstack rewards</a>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
