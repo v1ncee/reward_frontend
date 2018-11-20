@@ -16,23 +16,10 @@
   </div>
 
   <div class="card-columns mt-5 cards-rewards">
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden1 = !popupHidden1"></i>
-      </div>
+    <app-reward-item *ngFor="let reward of (rewardsList$ | async)"
+                     [item]="reward">
+    </app-reward-item>
 
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden1" (click)="popupHidden2 = !popupHidden2">
-        <a routerLink="/home" class="btn btn-secondary">Check out</a>
-        <a routerLink="/home" class="btn btn-secondary">Claim</a>
-      </div>
-    </div>
   </div>
 
 
