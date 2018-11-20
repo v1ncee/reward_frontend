@@ -52,7 +52,6 @@ import { PurchasesOverviewModule } from './purchases-overview/purchases-overview
     AuthenticationService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
