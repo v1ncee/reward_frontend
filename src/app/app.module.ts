@@ -19,6 +19,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.component';
+import { PurchasesOverviewModule } from './purchases-overview/purchases-overview.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.co
     NgBootstrapModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing
+    routing,
+    PurchasesOverviewModule
   ],
   declarations: [
     AppComponent,
