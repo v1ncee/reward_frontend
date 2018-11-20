@@ -1,10 +1,21 @@
 <div class="container">
-  <div class="form-group d-flex flex-row">
-    <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."/>
-    <button class="btn reward-search-button input-50">Search</button>
+  <div class="form-group d-flex flex-sm-row flex-column">
+    <div class="d-flex flex-row mt-2 w-100">
+      <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
+             #rewardSearch
+             (keyup)="search(rewardSearch.value)"/>
+      <button class="btn reward-search-button input-50">Search</button>
+    </div>
+    <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2"
+            #filterRewards
+            (change)="filter(filterRewards.value)">
+      <option value="0" selected hidden>&nbsp; Filter op:</option>
+      <option value="1">Punten (laag -> hoog)</option>
+      <option value="2">Punten (hoog -> laag)</option>
+    </select>
   </div>
 
-  <div class="card-columns mt-5">
+  <div class="card-columns mt-5 cards-rewards">
     <div class="card">
       <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
         Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden1 = !popupHidden1"></i>
@@ -18,103 +29,10 @@
       </div>
 
       <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden1" (click)="popupHidden2 = !popupHidden2">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
+        <a routerLink="/home" class="btn btn-secondary">Check out</a>
+        <a routerLink="/home" class="btn btn-secondary">Claim</a>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden2 = !popupHidden2"></i>
-      </div>
-
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden2" (click)="popupHidden2 = !popupHidden2">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden3 = !popupHidden3"></i>
-      </div>
-
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden3">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden4 = !popupHidden4"></i>
-      </div>
-
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden4">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden5 = !popupHidden5"></i>
-      </div>
-
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden5">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden6 = !popupHidden6"></i>
-      </div>
-
-      <div class="position-relative">
-        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
-        <div class="overlay-reward-img">
-          3000
-        </div>
-      </div>
-
-      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden6">
-        <a routerLink="/home" class="btn btn-secondary">Bekijk</a>
-        <a routerLink="/home" class="btn btn-secondary">Registreer</a>
-      </div>
-    </div>
-
-
-
   </div>
 
 
