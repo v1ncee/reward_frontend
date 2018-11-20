@@ -9,7 +9,7 @@ import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent }  from './app.component';
-import { routing }        from './app.routing';
+import { routing }       from './app.routing';
 
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
@@ -22,6 +22,9 @@ import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.co
 import { RewardItemComponent } from './rewards-overview/reward-item/reward-item.component';
 import { ExercisesOverviewComponent } from './exercises-overview/exercises-overview.component';
 import { PurchasesOverviewModule } from './purchases-overview/purchases-overview.module';
+import { RewardsAdminComponent} from './rewards-admin/rewards-admin.component';
+import { ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
+import { UsersAdminComponent} from './users-admin/users-admin.component';
 
 
 @NgModule({
@@ -32,7 +35,7 @@ import { PurchasesOverviewModule } from './purchases-overview/purchases-overview
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    PurchasesOverviewModule
+    PurchasesOverviewModule,
   ],
   declarations: [
     AppComponent,
@@ -45,6 +48,9 @@ import { PurchasesOverviewModule } from './purchases-overview/purchases-overview
     RewardsOverviewComponent,
     RewardItemComponent,
     ExercisesOverviewComponent,
+    RewardsAdminComponent,
+    ApplicationsAdminComponent,
+    UsersAdminComponent
   ],
   providers: [
     AuthGuard,
