@@ -1,9 +1,9 @@
-<div class="container">
-  <div class="form-group d-flex flex-sm-row flex-column">
+<div class="container px-0">
+  <div class="form-group d-flex flex-sm-row flex-column col-12">
     <div class="d-flex flex-row mt-2 w-100">
       <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
              #rewardSearch
-             (keyup)="search(rewardSearch.value)"/>
+             (keyup)="search(rewardSearch.value, filterRewards.value)"/>
       <button class="btn reward-search-button input-50">Search</button>
     </div>
     <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2"
@@ -15,12 +15,23 @@
     </select>
   </div>
 
-  <div class="card-columns mt-5 cards-rewards">
-    <app-reward-item *ngFor="let reward of (rewardsList$ | async)"
-                     [item]="reward">
-    </app-reward-item>
-
+  <div class="rewards">
+    <div class="mt-5 cards-rewards">
+      <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
+        <app-reward-item *ngFor="let item of rewardsList"
+                         [item]="item"
+                         class="col-lg-4 col-md-6 my-3">
+        </app-reward-item>
+      </div>
+      <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
+        <app-reward-item *ngFor="let item of rewardsListByName"
+                         [item]="item"
+                         class="col-lg-4 col-md-6 my-3">
+        </app-reward-item>
+      </div>
+    </div>
   </div>
-
-
 </div>
+
+
+

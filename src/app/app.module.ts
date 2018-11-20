@@ -24,6 +24,7 @@ import { PurchasesOverviewModule } from './purchases-overview/purchases-overview
 import { RewardsAdminComponent} from './rewards-admin/rewards-admin.component';
 import { ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
 import { UsersAdminComponent} from './users-admin/users-admin.component';
+import { RewardsDetailComponent } from './rewards-detail/rewards-detail.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { UsersAdminComponent} from './users-admin/users-admin.component';
     ExercisesOverviewComponent,
     RewardsAdminComponent,
     ApplicationsAdminComponent,
-    UsersAdminComponent
+    UsersAdminComponent,
+    RewardsDetailComponent
   ],
   providers: [
     AuthGuard,

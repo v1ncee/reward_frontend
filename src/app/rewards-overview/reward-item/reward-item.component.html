@@ -1,17 +1,18 @@
 <div class="card">
   <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-    Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden1 = !popupHidden1"></i>
+    {{item.title}}
+    <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)" (mouseleave)="toggleClass(item)"></i>
   </div>
 
   <div class="position-relative">
-    <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
+    <img class="card-img-bottom" src="https://mediationamsterdam.nl/wp-content/uploads/2016/02/cadeau-1030x1030.jpg" alt="Card image cap">
     <div class="overlay-reward-img">
-      3000
+      {{item.points}}
     </div>
   </div>
 
-  <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden1" (click)="popupHidden1 = !popupHidden1">
-    <a routerLink="/home" class="btn btn-secondary">Check out</a>
+  <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item.active" (mouseleave)="toggleClass(item)">
+    <a routerLink="/rewards/detail/{{item.id}}" class="btn btn-secondary">Details</a>
     <a routerLink="/home" class="btn btn-secondary">Claim</a>
   </div>
 </div>
