@@ -5,6 +5,8 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 import {RewardsOverviewComponent} from "./rewards-overview/rewards-overview.component";
+import {PurchasesOverviewComponent} from "./purchases-overview/purchases-overview.component";
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -12,6 +14,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'home', component: HomeComponent },
     { path: 'rewards', component: RewardsOverviewComponent },
+    { path: 'purchases', component: PurchasesOverviewComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -21,6 +21,7 @@ import { RegisterComponent } from './register';
 import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.component';
 import { RewardItemComponent } from './rewards-overview/reward-item/reward-item.component';
 import { ExercisesOverviewComponent } from './exercises-overview/exercises-overview.component';
+import { PurchasesOverviewModule } from './purchases-overview/purchases-overview.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ExercisesOverviewComponent } from './exercises-overview/exercises-overv
     NgBootstrapModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing
+    routing,
+    PurchasesOverviewModule
   ],
   declarations: [
     AppComponent,
