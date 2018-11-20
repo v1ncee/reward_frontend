@@ -15,6 +15,27 @@
     <button class="btn reward-search-button input-50">Search</button>
   </div>
 
+  <div class="card-columns mt-5 cards-rewards">
+    <!--<app-reward-item></app-reward-item>-->
+    <div class="card">
+      <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
+        Reis Aruba <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (click)="popupHidden1 = !popupHidden1"></i>
+      </div>
+
+      <div class="position-relative">
+        <img class="card-img-bottom" src="https://media.tuicontent.nl/p/header/vakantie-aruba.jpg" alt="Card image cap">
+        <div class="overlay-reward-img">
+          3000
+        </div>
+      </div>
+
+      <div class="btn-group-vertical popup-reward" [ngbCollapse]="!popupHidden1" (click)="popupHidden1 = !popupHidden1">
+        <a routerLink="/home" class="btn btn-secondary">Check out</a>
+        <a routerLink="/home" class="btn btn-secondary">Claim</a>
+      </div>
+    </div>
+  </div>
+
 
   <!--<div class="card-deck" style="width: 18rem;">-->
     <!--<div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">-->

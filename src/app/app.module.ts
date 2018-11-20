@@ -19,6 +19,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.component';
+import { RewardItemComponent } from './rewards-overview/reward-item/reward-item.component';
+import { ExercisesOverviewComponent } from './exercises-overview/exercises-overview.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.co
     LoginComponent,
     RegisterComponent,
     RewardsOverviewComponent,
+    RewardItemComponent,
+    ExercisesOverviewComponent,
   ],
   providers: [
     AuthGuard,

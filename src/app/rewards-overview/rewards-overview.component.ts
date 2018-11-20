@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ApiRewardsService} from "../_services/api-rewards.service";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-rewards-overview',
@@ -6,12 +8,14 @@ import {Component, OnInit} from '@angular/core';
   styles: []
 })
 export class RewardsOverviewComponent implements OnInit {
-  popupHidden = true;
+  // popupHidden = true;
+  rewardsList$: Observable<any>;
 
-  constructor() {
+  constructor(private rewardsService: ApiRewardsService) {
   }
 
   ngOnInit() {
+    this.getAllRewards();
   }
 
   filter(filter) {
@@ -20,6 +24,10 @@ export class RewardsOverviewComponent implements OnInit {
 
   search(name) {
     console.log(name);
+  }
+
+  getAllRewards() {
+    this.rewardsList$ = this.rewardsService.getAllRewards$();
   }
 
 }
