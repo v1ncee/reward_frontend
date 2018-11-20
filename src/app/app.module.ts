@@ -7,22 +7,23 @@ import {NavbarComponent} from './sharedComponents/navbar/navbar.component';
 import {FooterComponent} from './sharedComponents/footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AppComponent }  from './app.component';
+import { routing }       from './app.routing';
 
-import {AppComponent} from './app.component';
-import {routing} from './app.routing';
-
-import {AlertComponent} from './_directives';
-import {AuthGuard} from './_guards';
-import {JwtInterceptor} from './_helpers';
-import {AlertService, AuthenticationService, UserService} from './_services';
-import {HomeComponent} from './home';
-import {LoginComponent} from './login';
-import {RegisterComponent} from './register';
-import {RewardsOverviewComponent} from './rewards-overview/rewards-overview.component';
-import {RewardItemComponent} from './rewards-overview/reward-item/reward-item.component';
-import {ExercisesOverviewComponent} from './exercises-overview/exercises-overview.component';
-import {PurchasesOverviewModule} from './purchases-overview/purchases-overview.module';
-import {RewardsAdminComponent} from "./rewards-admin/rewards-admin.component";
+import { AlertComponent } from './_directives';
+import { AuthGuard } from './_guards';
+import { JwtInterceptor } from './_helpers';
+import { AlertService, AuthenticationService, UserService } from './_services';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { RewardsOverviewComponent } from './rewards-overview/rewards-overview.component';
+import { RewardItemComponent } from './rewards-overview/reward-item/reward-item.component';
+import { ExercisesOverviewComponent } from './exercises-overview/exercises-overview.component';
+import { PurchasesOverviewModule } from './purchases-overview/purchases-overview.module';
+import { RewardsAdminComponent} from './rewards-admin/rewards-admin.component';
+import { ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
+import { UsersAdminComponent} from './users-admin/users-admin.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import {RewardsAdminComponent} from "./rewards-admin/rewards-admin.component";
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    PurchasesOverviewModule
+    PurchasesOverviewModule,
   ],
   declarations: [
     AppComponent,
@@ -46,7 +47,9 @@ import {RewardsAdminComponent} from "./rewards-admin/rewards-admin.component";
     RewardsOverviewComponent,
     RewardItemComponent,
     ExercisesOverviewComponent,
-    RewardsAdminComponent
+    RewardsAdminComponent,
+    ApplicationsAdminComponent,
+    UsersAdminComponent
   ],
   providers: [
     AuthGuard,
