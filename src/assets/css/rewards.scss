@@ -9,6 +9,11 @@
 
 .input-50 {
   height: 50px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  select {
+    height: 50px !important;
+  }
 }
 
 .reward-dots-button {
@@ -25,6 +30,15 @@
   right: 0;
   transform: translateX(100%);
   z-index: 50;
+  .btn-secondary {
+    background-color: #333;
+    border: #333;
+    border-radius: 0;
+
+    &:hover {
+      background-color: #222;
+    }
+  }
 }
 
 .overlay-reward-img {
@@ -45,6 +59,25 @@
 
 .card-reward-width {
   width: 30% !important;
+}
+
+.cards-rewards {
+  .card {
+    border-radius: 0 !important;
+    border: none;
+
+    .card-header {
+      background-color: #ddd;
+      border-radius: 0 !important;
+    }
+
+    .card-img-bottom {
+      border-radius: 0 !important;
+
+    }
+
+
+  }
 }
 
 //.card-columns {

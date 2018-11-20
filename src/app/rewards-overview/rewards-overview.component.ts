@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-rewards-overview',
@@ -8,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class RewardsOverviewComponent implements OnInit {
   popupHidden = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  filter(filter) {
+    console.log(filter);
+  }
+
+  search(name) {
+    console.log(name);
   }
 
 }
