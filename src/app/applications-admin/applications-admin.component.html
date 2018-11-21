@@ -7,14 +7,13 @@
         <th>Description:</th>
         <th colspan="2">Actions</th>
       </tr>
-      <tr>
-        <td>Test</td>
-        <td>24/11/18</td>
-        <td>This a test description...</td>
-        <td><i class="far fa-check-circle"></i></td>
-        <td><i class="far fa-times-circle"></i></td>
+      <tr *ngFor="let item of items">
+        <td>{{item.name}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.description}}</td>
+        <td><i class="far fa-check-circle" (click)="accept(item)"></i></td>
+        <td><i class="far fa-times-circle" (click)="decline(item)"></i></td>
       </tr>
-      <tr></tr>
     </table>
   </div>
 </div>

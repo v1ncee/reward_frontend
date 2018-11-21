@@ -12,6 +12,8 @@ import {ExercisesOverviewComponent} from "./exercises-overview/exercises-overvie
 import {ExercisesDetailComponent} from "./exercises-detail/exercises-detail.component";
 // import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
 // import {UsersAdminComponent} from './users-admin/users-admin.component';
+import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
+import {UsersAdminComponent} from './users-admin/users-admin.component';
 
 
 const appRoutes: Routes = [
@@ -25,8 +27,8 @@ const appRoutes: Routes = [
     { path: 'exercises', component: ExercisesOverviewComponent },
     { path: 'exercises/detail/:id', component: ExercisesDetailComponent },
     { path: 'rewards-admin', component: RewardsAdminComponent},
-    // { path: 'applications-admin', component: ApplicationsAdminComponent},
-    // { path: 'users-admin', component: UsersAdminComponent},
+    { path: 'applications-admin', component: ApplicationsAdminComponent},
+    { path: 'users-admin', component: UsersAdminComponent},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

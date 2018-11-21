@@ -1,3 +1,11 @@
+.card{
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+}
+.card .card-header{
+  color:white;
+  background-color: #333333 !important;
+}
+
 .reward-search-input {
   border-radius: 0.25rem 0 0 0.25rem !important;
   //background: red !important;
@@ -72,7 +80,16 @@
     }
   }
 }
-
+.form-group{
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+}
+.btn{
+  background-color: #333333;
+  color:white;
+}
+.card-img-bottom{
+  height:10% !important;
+}
 //.card-columns {
 //  @include media-breakpoint-only(lg) {
 //    column-count: 2;

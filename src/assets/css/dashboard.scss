@@ -91,7 +91,7 @@ body{
 }
 
 .title{
-  font-size:110%;
+  font-size:24px;
   width:5vw;
   height:5vh;
   top:0.1vw;
@@ -126,7 +126,7 @@ body{
   display:inline-flex;
   width:100%;
   text-align: center;
-  padding-top:5vh;
+  margin-top:5vh;
   cursor:pointer;
   z-index:2;
 }
@@ -193,10 +193,8 @@ body{
   outline-color: #E9D0A7;
   font-size:18px;
 }
-
-
 .box{
-  margin:7% 1% 1% 4%;
+  margin:1% 1% 1% 0;
   height:80%;
   width:93%;
   background-color: #fff;
@@ -334,6 +332,19 @@ select{
   flex-basis:10%;
   background-color: #333333;
   color:#E9D0A7;
+}
+.table{
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.table i{
+  font-size:24px;
+  cursor:pointer;
+}
+.table th{
+  background-color: #333333;
+  color:white;
 }
 
 @media only screen and (max-width: 600px) {
