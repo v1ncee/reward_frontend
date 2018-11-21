@@ -1,5 +1,5 @@
-export class Reward{
-  id: number;
+export class Reward {
+  _id: number;
   title: string;
   description: string;
   points: number;

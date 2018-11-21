@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthGuard} from "../_guards";
-import {AuthenticationService} from "../_services";
-import {Router} from "@angular/router";
+import {AuthenticationService} from '../_services';
+import {Router} from '@angular/router';
 import {ApiRewardsService} from '../_services/api-rewards.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
+import {Reward} from '../_models/reward';
+
 
 @Component({
   selector: 'app-rewards-admin',
@@ -12,21 +12,14 @@ import {first} from 'rxjs/operators';
   styleUrls: ['./rewards-admin.component.sass']
 })
 export class RewardsAdminComponent implements OnInit {
-  // items = [
-  //   {name: 'Aruba', price: 3000, image: 'https://media.tuicontent.nl/p/header/vakantie-aruba.jpg', active: false},
-  //   {name: 'Opleiding', price: 200, image: 'https://media.tuicontent.nl/p/header/vakantie-aruba.jpg', active: false},
-  //   {name: 'Test', price: 25, image: 'https://media.tuicontent.nl/p/header/vakantie-aruba.jpg', active: false},
-  //   {name: 'Bier', price: 25, image: 'https://media.tuicontent.nl/p/header/vakantie-aruba.jpg', active: false},
-  //   {name: 'Trip to North Korea', price: 'FREE', image: 'https://media.tuicontent.nl/p/header/vakantie-aruba.jpg', active: false},
-  //   {name: 'JAVA', price: 'DEAD', image: 'http://3.bp.blogspot.com/-kUT0WNNNTLo/TrUbE-gvyUI/AAAAAAAABHU/wF_0X7Hs258/s1600/javadead.png', active: false},
-  //
-  // ];
+
   editForm: FormGroup;
+  opModal = false;
   loading = false;
   submitted = false;
   returnUrl: string;
   items;
-  editItem;
+  editItem: Reward;
 
   constructor(private rewardsService: ApiRewardsService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
   }
@@ -43,7 +36,7 @@ export class RewardsAdminComponent implements OnInit {
       title: ['', Validators.required],
       points: [0, Validators.required],
       description: [''],
-      image: ['', Validators.required]
+      image: ['']
     });
   }
 
@@ -53,20 +46,22 @@ export class RewardsAdminComponent implements OnInit {
 
   getAllRewards() {
     this.rewardsService.getAllRewards().then(data => this.items = data);
-    console.log(this.items);
+    console.log(this.rewardsService.getAllRewards());
   }
-
   remove(id) {
     this.rewardsService.deleteReward(id);
   }
 
   edit(item) {
+    this.editItem = item;
+    this.opModal = true;
     this.editForm = this.formBuilder.group({
-      title: [item.title, Validators.required],
-      points: [item.points, Validators.required],
-      description: [item.description, Validators.required],
-      image: [item.image, Validators.required]
+      title: [this.editItem.title, Validators.required],
+      points: [this.editItem.points, Validators.required],
+      description: [this.editItem.description],
+      image: [this.editItem.image]
     });
+    console.log(this.editItem);
   }
 
   onSubmit() {
@@ -77,7 +72,14 @@ export class RewardsAdminComponent implements OnInit {
       return;
     }
     this.loading = true;
-    console.log();
+    let image = this.f.image.value;
+    if(image == null) {
+      image = '';
+    }
+    const editItemSubmitted = {_id: this.editItem._id , title: this.f.title.value, description: this.f.description.value, image: image, points: this.f.points.value};
+    console.log(editItemSubmitted);
+    this.rewardsService.updateReward(this.editItem._id, editItemSubmitted).then(data => console.log(data));
+
   }
 
   filter(filter) {

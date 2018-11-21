@@ -85,6 +85,10 @@
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
 }
 
+.fg{
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+}
+
 .btn {
   background-color: #333333;
   color: white;
@@ -94,6 +98,16 @@
   height: 10% !important;
 }
 
+.myModal{
+  display:none;
+
+}
+.opModal{
+  opacity:100 !important;
+  display:block !important;
+  top:50% !important;
+  transition:opacity 0.5s, top 0.5s !important;
+}
 //.card-columns {
 //  @include media-breakpoint-only(lg) {
 //    column-count: 2;
