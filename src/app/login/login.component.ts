@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService) {}
 
     ngOnInit() {
+      this.router.navigate(["login"]);
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]

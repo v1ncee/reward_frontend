@@ -1,8 +1,9 @@
-.card{
-  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+.card {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
 }
-.card .card-header{
-  color:white;
+
+.card .card-header {
+  color: white;
   background-color: #333333 !important;
 }
 
@@ -34,9 +35,8 @@
 
 .popup-reward {
   position: absolute !important;
-  top: 0;
+  top: 45px;
   right: 0;
-  transform: translateX(100%);
   z-index: 50;
   .btn-secondary {
     background-color: #333;
@@ -80,16 +80,20 @@
     }
   }
 }
-.form-group{
-  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+
+.form-group {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
 }
-.btn{
+
+.btn {
   background-color: #333333;
-  color:white;
+  color: white;
 }
-.card-img-bottom{
-  height:10% !important;
+
+.card-img-bottom {
+  height: 10% !important;
 }
+
 //.card-columns {
 //  @include media-breakpoint-only(lg) {
 //    column-count: 2;
