@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthGuard} from "../_guards";
+import {AuthenticationService} from "../_services";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-rewards-admin',
@@ -15,9 +18,14 @@ export class RewardsAdminComponent implements OnInit {
     {name: 'JAVA', price: 'DEAD', image: 'http://3.bp.blogspot.com/-kUT0WNNNTLo/TrUbE-gvyUI/AAAAAAAABHU/wF_0X7Hs258/s1600/javadead.png', active: false},
 
   ];
-  constructor() { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    if (this.auth.checkPermission('admin')) {
+      console.log('ja');
+    } else {
+      this.router.navigate(['login']);
+    }
 
   }
 
