@@ -15,6 +15,8 @@ export class ApplicationsAdminComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
   accept(item) {
     console.log(item);
   }
