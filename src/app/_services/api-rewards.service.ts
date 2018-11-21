@@ -17,22 +17,6 @@ export class ApiRewardsService {
   constructor(private http: HttpClient) {
   }
 
-  // getAllRewards$(): Observable<any> {
-  //   console.log('getAllRewards');
-  //   return this.http.get(this.getAllRewards)
-  //     .pipe(
-  //       tap(req => console.log('get-request', req)),
-  //       catchError(
-  //         (error) => {
-  //           console.log(error);
-  //           alert(error.message);
-  //           return EMPTY;
-  //         }),
-  //       share()
-  //     );
-  // }
-
-
   getAllRewards() {
     return this.http.get(this.URLgetAllRewards)
       .toPromise().then(data => {

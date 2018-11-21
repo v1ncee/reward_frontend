@@ -25,6 +25,8 @@ import { RewardsAdminComponent} from './rewards-admin/rewards-admin.component';
 import { ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
 import { UsersAdminComponent} from './users-admin/users-admin.component';
 import { RewardsDetailComponent } from './rewards-detail/rewards-detail.component';
+import { ExerciseItemComponent } from './exercises-overview/exercise-item/exercise-item.component';
+import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { RewardsDetailComponent } from './rewards-detail/rewards-detail.componen
     RewardsAdminComponent,
     ApplicationsAdminComponent,
     UsersAdminComponent,
-    RewardsDetailComponent
+    RewardsDetailComponent,
+    ExerciseItemComponent,
+    ExercisesDetailComponent
   ],
   providers: [
     AuthGuard,

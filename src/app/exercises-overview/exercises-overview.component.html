@@ -1,3 +1,37 @@
-<p>
-  exercises-overview works!
-</p>
+<div class="container px-0">
+  <div class="form-group d-flex flex-sm-row flex-column col-12">
+    <div class="d-flex flex-row mt-2 w-100">
+      <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
+             #rewardSearch
+             (keyup)="search(rewardSearch.value, filterRewards.value)"/>
+      <button class="btn reward-search-button input-50">Search</button>
+    </div>
+    <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2"
+            #filterRewards
+            (change)="filter(filterRewards.value)">
+      <option value="0" selected hidden>&nbsp; Filter op:</option>
+      <option value="1">Punten (laag -> hoog)</option>
+      <option value="2">Punten (hoog -> laag)</option>
+    </select>
+  </div>
+
+  <div class="rewards">
+    <div class="mt-5 cards-rewards">
+      <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
+        <app-exercise-item *ngFor="let item of exercisesList"
+                         [item]="item"
+                         class="col-lg-4 col-md-6 my-3">
+        </app-exercise-item>
+      </div>
+      <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
+        <app-exercise-item *ngFor="let item of exercisesListByName"
+                         [item]="item"
+                         class="col-lg-4 col-md-6 my-3">
+        </app-exercise-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
