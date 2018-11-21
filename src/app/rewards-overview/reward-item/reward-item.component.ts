@@ -14,4 +14,7 @@ export class RewardItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleClass(item){
+    item.active = !item.active;
+  }
 }

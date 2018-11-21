@@ -25,8 +25,8 @@
 }
 
 .reward-dots-button {
-  padding: 5px;
-  right: 10px;
+  padding: 15px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -63,10 +63,6 @@
   font-weight: bold;
   text-shadow: 0px 0px 15px #000;
   letter-spacing: 2px;
-}
-
-.card-reward-width {
-  width: 30% !important;
 }
 
 .cards-rewards {
