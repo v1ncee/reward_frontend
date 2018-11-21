@@ -14,11 +14,12 @@ export class RewardsAdminComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   items;
-  editItem;
+  editItem = {title: '', points: 0, description: '', image: ''};
   constructor(private rewardsService: ApiRewardsService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('currentUser'));
     this.getAllRewards();
     this.editForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -30,16 +31,20 @@ export class RewardsAdminComponent implements OnInit {
   get f() { return this.editForm.controls; }
   getAllRewards() {
     this.rewardsService.getAllRewards().then(data => this.items = data);
-    console.log(this.items);
+    console.log(this.rewardsService.getAllRewards());
   }
-  remove(item) {
-    console.log(item);
+  remove(id) {
+    this.rewardsService.deleteReward(id);
+    console.log(id);
   }
   edit(item) {
+    console.log(this.items);
+    this.editItem = item;
+    console.log(this.editItem);
     this.editForm = this.formBuilder.group({
       title: [item.title, Validators.required],
       points: [item.points, Validators.required],
-      description: [item.description, Validators.required],
+      description: [item.description],
       image: [item.image, Validators.required]
     });
   }
@@ -51,7 +56,11 @@ export class RewardsAdminComponent implements OnInit {
       return;
     }
     this.loading = true;
-    console.log();
+    this.editItem.title = this.f.title.value;
+    this.editItem.points = this.f.points.value;
+    this.editItem.description = this.f.description.value;
+    this.editItem.image = this.f.image.value;
+    console.log(this.editItem);
   }
   filter(filter) {
     console.log(filter);
@@ -61,7 +70,7 @@ export class RewardsAdminComponent implements OnInit {
     console.log(name);
   }
 
-  toggleClass(item){
+  toggleClass(item) {
     item.active = !item.active;
   }
 
