@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../_services";
+import {JwtHelperService} from '../../../../node_modules/@auth0/angular-jwt';
 
 @Component({
   selector: 'app-reward-item',
@@ -20,17 +21,14 @@ export class RewardItemComponent implements OnInit {
   }
 
   claim(id, points){
-    console.log(id);
-    console.log(points);
-    var userlocal = JSON.parse(localStorage.getItem("currentUser"));
-    this.userService.getById(userlocal._id)
+    const jwtHelper = new JwtHelperService();
+    const userid = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
+    this.userService.getById(userid)
       .then(data => this.user = data)
       .then(()=> {
-        console.log("reward: " + points);
-        console.log("user: " + this.user.points);
         if(points < this.user.points){
           this.user.points -= points;
-          console.log("user-reward: " + this.user.points);
+          this.user.purchases.push(id);
           this.userService.update(this.user);
         }
       });
