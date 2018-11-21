@@ -11,22 +11,18 @@ import { finalize } from 'rxjs/operators';
 export class PurchasesOverviewComponent implements OnInit {
 
   loading = false;                                    // (1)
-  purchases$: Observable<any>;                   // (2)
-
+  purchases;                // (2)
   constructor(private apixdbService: ApidbService) {   // (3)
   }
 
   ngOnInit() {
-    //
+    this.getPurchases();
   }
 
-  getPurchases(userID) {
+  getPurchases() {
     this.loading = true;
-    this.purchases$ = this.apixdbService.getOverviewPurchases$(userID)
-      .pipe(
-        finalize(() => {
-          this.loading = false;
-        })
-      );
+    this.apixdbService.getOverviewPurchases()
+      .then( data => this.purchases = data)
+      .then(data => {this.loading = false;});
   }
 }

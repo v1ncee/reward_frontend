@@ -13,7 +13,11 @@ export class UserService {
     }
 
     getById(id: number) {
-        return this.http.get(`${environment.apiUrl}/users/` + id);
+      console.log(environment.apiUrl + "/users/" + id)
+      return this.http.get(environment.apiUrl + "/users/" + id)
+        .toPromise().then(data => {
+          return data;
+        })
     }
 
     register(user: User) {
