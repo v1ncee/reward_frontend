@@ -22,6 +22,8 @@ export class ApplicationsAdminComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
+
+
   accept(item) {
     console.log(item);
   }

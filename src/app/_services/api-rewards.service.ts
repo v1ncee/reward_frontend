@@ -21,13 +21,24 @@ export class ApiRewardsService {
     return this.http.get(this.URLgetAllRewards)
       .toPromise().then(data => {
         return data;
-      })
+      });
   }
 
   getRewardById(id) {
     return this.http.get(this.URLgetRewardById + id)
       .toPromise().then(data => {
         return data;
-      })
+      });
+  }
+
+  updateReward(reward) {
+    return this.http.put(this.URLgetAllRewards + reward.id, reward);
+  }
+  addReward(reward) {
+    return this.http.post(this.URLgetAllRewards + reward.id, reward);
+  }
+  deleteReward(id) {
+    console.log(id);
+    return this.http.delete(this.URLgetAllRewards + id).toPromise();
   }
 }

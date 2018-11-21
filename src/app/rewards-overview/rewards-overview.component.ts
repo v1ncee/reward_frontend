@@ -26,21 +26,21 @@ export class RewardsOverviewComponent implements OnInit {
       if (this.hideItems == true) {
         this.rewardsListByName.sort((a, b) => {
           return a.points - b.points;
-        })
+        });
       } else {
         this.rewardsList.sort((a, b) => {
           return a.points - b.points;
-        })
+        });
       }
     } else {
       if (this.hideItems == true) {
         this.rewardsListByName.sort((a, b) => {
           return b.points - a.points;
-        })
+        });
       } else {
         this.rewardsList.sort((a, b) => {
           return b.points - a.points;
-        })
+        });
       }
     }
 
@@ -72,7 +72,7 @@ export class RewardsOverviewComponent implements OnInit {
 
   getAllRewards() {
     this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
-    // console.log(this.rewardsList);
+    console.log(this.rewardsList);
   }
 
 }
