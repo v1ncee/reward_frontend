@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../environments/environment";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {EMPTY, Observable} from "rxjs/index";
-import {catchError, share, tap} from "rxjs/internal/operators";
-import {resolve} from "url";
-import {map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +29,18 @@ export class ApiRewardsService {
   }
 
   updateReward(id, reward) {
-    return this.http.put(this.URLgetAllRewards + id, reward).toPromise();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })};
+    return this.http.put(this.URLgetAllRewards + id, reward, httpOptions).toPromise().then(()=> console.log("reward geupdate"));
   }
   addReward(reward) {
-    return this.http.post(this.URLgetAllRewards + reward.id, reward).toPromise();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })};
+    return this.http.post(this.URLgetAllRewards + reward.id, reward, httpOptions).toPromise();
   }
   deleteReward(id) {
     console.log(id);

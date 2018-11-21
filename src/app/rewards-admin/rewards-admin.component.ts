@@ -72,7 +72,12 @@ export class RewardsAdminComponent implements OnInit {
       return;
     }
     this.loading = true;
-    const editItemSubmitted = {_id: this.editItem._id, title: this.f.title.value, points: this.f.points.value , description: this.f.description.value};
+    let image = this.f.image.value;
+    if(image == null) {
+      image = '';
+    }
+    const editItemSubmitted = {_id: this.editItem._id , title: this.f.title.value, description: this.f.description.value, image: image, points: this.f.points.value};
+    console.log(editItemSubmitted);
     this.rewardsService.updateReward(this.editItem._id, editItemSubmitted).then(data => console.log(data));
 
   }
