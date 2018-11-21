@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '../../environments/environment';
 
@@ -24,5 +25,21 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+
+    isLoggedIn() {
+      if (JSON.parse(localStorage.getItem('currentUser')).token !== null) {return true} else {return false}
+    }
+
+    checkPermission(permission: string) {
+      if(!this.isLoggedIn()) {
+        return false;
+      }
+
+      const jwtHelper = new JwtHelperService();
+      const permissions = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).permissions;
+
+      console.log(permissions[0]);
+      return permissions[0] === permission;
     }
 }

@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthGuard} from '../_guards';
 import {AuthenticationService} from '../_services';
 import {Router} from '@angular/router';
 import {ApiRewardsService} from '../_services/api-rewards.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
 import {Reward} from '../_models/reward';
+
 
 @Component({
   selector: 'app-rewards-admin',
