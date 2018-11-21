@@ -18,8 +18,11 @@ export class RewardsAdminComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  items;
   editItem: Reward;
+
+  rewardsList;
+  rewardsListByName;
+  hideItems = false;
 
   constructor(private rewardsService: ApiRewardsService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
   }
@@ -45,7 +48,7 @@ export class RewardsAdminComponent implements OnInit {
   }
 
   getAllRewards() {
-    this.rewardsService.getAllRewards().then(data => this.items = data);
+    this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
     console.log(this.rewardsService.getAllRewards());
   }
   remove(id) {
@@ -83,11 +86,53 @@ export class RewardsAdminComponent implements OnInit {
   }
 
   filter(filter) {
-    console.log(filter);
+    // console.log(filter);
+    if (filter == 1) {
+      if (this.hideItems == true) {
+        this.rewardsListByName.sort((a, b) => {
+          return a.points - b.points;
+        });
+      } else {
+        this.rewardsList.sort((a, b) => {
+          return a.points - b.points;
+        });
+      }
+    } else {
+      if (this.hideItems == true) {
+        this.rewardsListByName.sort((a, b) => {
+          return b.points - a.points;
+        });
+      } else {
+        this.rewardsList.sort((a, b) => {
+          return b.points - a.points;
+        });
+      }
+    }
+
   }
 
-  search(name) {
-    console.log(name);
+  search(name, filter) {
+    if (name !== '') {
+      this.hideItems = true;
+      // this.openBreweryItems$ = of(true);
+      this.rewardsListByName = [];
+
+      for (const x in this.rewardsList) {
+        if ((this.rewardsList[x]['title'].toLowerCase()).match(name.toLowerCase())) {
+          this.rewardsListByName.push(this.rewardsList[x]);
+        }
+      }
+
+      if (filter !== '') {
+        this.filter(filter);
+      }
+    } else {
+      this.hideItems = false;
+
+      if (filter !== '') {
+        this.filter(filter);
+      }
+    }
   }
 
   toggleClass(item) {

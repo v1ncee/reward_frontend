@@ -55,7 +55,7 @@ import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.co
     UsersAdminComponent,
     RewardsDetailComponent,
     ExerciseItemComponent,
-    ExercisesDetailComponent
+    ExercisesDetailComponent,
   ],
   providers: [
     AuthGuard,
