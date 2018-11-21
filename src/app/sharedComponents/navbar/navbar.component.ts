@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   isCollapsed = true;
   open = false;
+  aantalPunten;
+
   constructor() { }
   ngOnInit() { }
   toggleOpen() { }
