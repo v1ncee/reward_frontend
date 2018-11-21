@@ -1,19 +1,19 @@
 <div class="container px-0">
-  <div class="form-group fg d-flex flex-sm-row flex-column col-12">
-    <div class="d-flex flex-row  w-100">
+  <div class="form-group d-flex flex-sm-row flex-column col-12">
+    <div class="d-flex flex-row  w-100 fg">
       <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
              #rewardSearch
              (keyup)="search(rewardSearch.value)"/>
       <button class="btn reward-search-button input-50">Search</button>
     </div>
-    <select name="filter-rewards" id="filter-rewards" class="input-50"
+    <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
             #filterRewards
             (change)="filter(filterRewards.value)">
       <option value="0" selected hidden>&nbsp; Filter op:</option>
       <option value="1">Punten (laag -> hoog)</option>
       <option value="2">Punten (hoog -> laag)</option>
     </select>
-    <button class="btn reward-search-button input-50">Add</button>
+    <button class="btn reward-search-button input-50 fg">Add</button>
   </div>
 
   <div class="rewards">
