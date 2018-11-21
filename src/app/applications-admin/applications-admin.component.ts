@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../_services";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-applications-admin',
@@ -11,9 +13,14 @@ export class ApplicationsAdminComponent implements OnInit {
     {name: 'Test', date: '24/11/2018', description: 'This is a test description'},
     {name: 'Test', date: '24/11/2018', description: 'This is a test description'},
   ];
-  constructor() { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    if (this.auth.checkPermission('admin')) {
+      console.log('ja');
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
 

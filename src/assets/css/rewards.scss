@@ -80,7 +80,7 @@
     }
   }
 }
-.form-group{
+.fg{
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
 }
 .btn{
@@ -89,6 +89,16 @@
 }
 .card-img-bottom{
   height:10% !important;
+}
+.myModal{
+  display:none;
+
+}
+.opModal{
+  opacity:100 !important;
+  display:block !important;
+  top:50% !important;
+  transition:opacity 0.5s, top 0.5s !important;
 }
 //.card-columns {
 //  @include media-breakpoint-only(lg) {

@@ -31,13 +31,14 @@ export class ApiRewardsService {
       });
   }
 
-  updateReward(reward) {
-    return this.http.put(this.URLgetAllRewards + reward.id, reward);
+  updateReward(id, reward) {
+    return this.http.put(this.URLgetAllRewards + id, reward).toPromise();
   }
   addReward(reward) {
-    return this.http.post(this.URLgetAllRewards + reward.id, reward);
+    return this.http.post(this.URLgetAllRewards + reward.id, reward).toPromise();
   }
   deleteReward(id) {
-    return this.http.delete(this.URLgetAllRewards + id);
+    console.log(id);
+    return this.http.delete(this.URLgetAllRewards + id).toPromise();
   }
 }
