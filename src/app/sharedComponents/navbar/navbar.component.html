@@ -1,23 +1,16 @@
-<div id="hamburger" (click)="open = !open" [ngClass]="{'open': open}">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
+<div class="w-100 nav-bar d-flex align-items-center">
+  <div class="w-100 nav-bar-title d-flex justify-content-between align-items-center px-sm-4 px-3"><span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span> <span class="mr-sm-5 pr-sm-2 mr-0 pr-0 font-weight-normal"><strong>{{(user$ | async)?.points}}</strong> points</span></div>
 </div>
-<div class="nav-bar w-100">
-  <div class="title w-100 d-flex justify-content-between align-items-center"><span class="">{{user?.firstName}} {{user?.lastName}}</span> <span class="mr-5 pr-3 font-weight-normal"><strong>{{user?.points}}</strong> points</span></div>
-  <div class="profile"></div>
-</div>
-<div class="side-nav" [ngClass]="{'open': open}">
-  <div class="title-wrapper">
-    <div class="title">Rewards</div>
-  </div>
 
-  <ul>
-    <div class="link-wrapper" routerLink="/applications-admin" routerLinkActive="active"><div class="cover"><i class="fas fa-file-contract"></i></div><li>Applications</li></div>
-    <div class="link-wrapper" routerLink="/users-admin" routerLinkActive="active"><div class="cover"><i class="fas fa-users"></i></div><li>Users</li></div>
-    <div class="link-wrapper" routerLink="/rewards" routerLinkActive="active"><div class="cover"><i class="fas fa-gift"></i></div><li>Rewards</li></div>
-<!--    <div class="link-wrapper"><div class="cover"><i class="fas fa-info"></i></div><li></li></div>-->
-    <div class="link-wrapper" routerLink="/logout" routerLinkActive="active"><div class="cover"><i class="fas fa-unlock"></i></div><li>Logout</li></div>
-  </ul>
+<div class="d-flex flex-column position-fixed sidebar" [ngClass]="{'open': open}">
+  <div class="d-flex flex-sm-column flex-row sidebar-nav nav-icon-container justify-content-between">
+    <div (click)="open = !open" class="align-self-center align-items-center nav-icon d-sm-flex d-none">
+      <i class="fas fa-bars text-white" [ngbCollapse]="open"></i>
+      <i class="fas fa-times text-white" [ngbCollapse]="!open"></i>
+    </div>
+    <div class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
+    <div class="nav-icon" routerLink="/users-admin" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
+    <div class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i class="fas fa-user"></i><span [ngbCollapse]="!open">Users</span></div>
+    <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
+  </div>
 </div>

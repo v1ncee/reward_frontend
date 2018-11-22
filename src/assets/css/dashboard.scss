@@ -17,15 +17,126 @@ body{
   background-color: #F4F4F4 !important;
   font-family: 'Open Sans', sans-serif;
 }
+
+.active {
+  color: #fff;
+  background-color: #444;
+}
+
 .nav-bar{
   //width:100%;
-  height:40px;
+  height:50px;
   position:fixed;
   z-index:2;
   background-color: #fff;
   font-weight: bold;
   font-size: 20px;
 }
+
+.sidebar {
+  width: 50px;
+  z-index: 99;
+  height: 100%;
+  background-color: #333333;
+}
+
+.text-nav {
+  color: #fff !important;
+}
+
+.sidebar-nav {
+  color: #aaa;
+}
+
+.nav-icon {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: #555 solid 1px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #444;
+  }
+}
+
+.sidebar-hamburger {
+  height: 50px;
+  cursor: pointer;
+}
+
+.open {
+  width: 200px;
+  z-index: 99;
+  height: 100%;
+
+  .nav-icon {
+    width: 200px;
+    text-align: left !important;
+
+    i {
+      position: absolute;
+      left: 18px;
+    }
+    span {
+      position: absolute;
+      left: 50px;
+    }
+  }
+
+  //.nav-icon-container {
+  //  position: absolute;
+  //  left: 0px;
+  //}
+}
+
+.nav-bar {
+  left: 50px;
+  width: 100%;
+  z-index: 98;
+  position: fixed;
+}
+
+.content{
+  width:calc(100% - 50px);
+  height:100vh;
+  //padding-left:50px;
+  left: 50px;
+  padding-top:60px !important;
+  background-color: #F4F4F4;
+  position:relative;
+  z-index:1;
+
+}
+
+@media (max-width: 576px) {
+  .sidebar{
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+  }
+
+  .content {
+    left: 0;
+    width: 100%;
+  }
+
+  .nav-bar {
+    width: 100%;
+    left: 0;
+  }
+
+  .nav-icon {
+    border-bottom: none;
+    width: 100%;
+    border-right: #555 solid 1px;
+    height: 50px;
+  }
+}
+
+
 .profile{
   float:right;
   position: relative;
@@ -107,10 +218,10 @@ body{
 .side-nav {
   background-color: #333333;
   position: fixed;
-  width: 3%;
+  width: 50px;
   height: 100%;
   color:white;
-  padding-left:0;
+  //padding-left:0;
   z-index: 2;
   overflow:hidden;
 }
@@ -154,16 +265,7 @@ body{
   font-size:24px;
   z-index:4;
 }
-.content{
-  width:100vw;
-  height:100vh;
-  padding-left:3%;
-  padding-top:60px !important;
-  background-color: #F4F4F4;
-  position:relative;
-  z-index:1;
 
-}
 .wrapper{
   display:inline-flex;
   width:90%;

@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {path: 'users-admin', component: UsersAdminComponent, canActivate: [AuthGuard]},
   {path: 'logout', component: LoginComponent},
 
-  {path: '**', redirectTo: ''},
+  {path: '**', redirectTo: 'exercises'},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
