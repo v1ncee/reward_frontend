@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import {Reward} from '../_models/reward';
 
 
 @Injectable({
@@ -8,21 +9,20 @@ import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 })
 export class ApiRewardsService {
 
-  readonly URLgetAllRewards = environment.apiUrl + '/rewards/';
-  readonly URLgetRewardById = environment.apiUrl + '/rewards/';
+  readonly URLRewards = environment.apiUrl + '/rewards/';
 
   constructor(private http: HttpClient) {
   }
 
   getAllRewards() {
-    return this.http.get(this.URLgetAllRewards)
+    return this.http.get(this.URLRewards)
       .toPromise().then(data => {
         return data;
       });
   }
 
   getRewardById(id) {
-    return this.http.get(this.URLgetRewardById + id)
+    return this.http.get(this.URLRewards + id)
       .toPromise().then(data => {
         return data;
       });
@@ -33,17 +33,13 @@ export class ApiRewardsService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })};
-    return this.http.put(this.URLgetAllRewards + id, reward, httpOptions).toPromise().then(()=> console.log("reward geupdate"));
+    return this.http.put(this.URLRewards + id, reward, httpOptions).toPromise().then(() => console.log("reward updated"));
   }
   addReward(reward) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })};
-    return this.http.post(this.URLgetAllRewards + reward.id, reward, httpOptions).toPromise();
+    return this.http.post(this.URLRewards, reward).toPromise().then(() => console.log("reward added"));
   }
   deleteReward(id) {
     console.log(id);
-    return this.http.delete(this.URLgetAllRewards + id).toPromise();
+    return this.http.delete(this.URLRewards + id).toPromise();
   }
 }

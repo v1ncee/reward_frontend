@@ -1,32 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services';
 import {Router} from '@angular/router';
-import {ApiRewardsService} from '../_services/api-rewards.service';
+import {ApiExercisesService} from '../_services/api-exercises.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Reward} from '../_models/reward';
-
+import {Exercise} from '../_models/exercise';
 
 @Component({
-  selector: 'app-rewards-admin',
-  templateUrl: './rewards-admin.component.html',
-  styleUrls: ['./rewards-admin.component.sass']
+  selector: 'app-admin-exercises',
+  templateUrl: './exercises-admin.component.html',
+  styleUrls: ['./exercises-admin.component.sass']
 })
-export class RewardsAdminComponent implements OnInit {
-
+export class ExercisesAdminComponent implements OnInit {
   editForm: FormGroup;
   addForm: FormGroup;
   addmodal = false;
   editmodal = false;
   loading = false;
   submitted = false;
-  editItem: Reward;
+  editItem: Exercise;
 
-  rewardsList;
-  rewardsListByName;
+  exercisesList;
+  exercisesListByName;
   hideItems = false;
-
-  constructor(private rewardsService: ApiRewardsService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
-  }
+  constructor(private exercisesService: ApiExercisesService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     if (this.auth.checkPermission('admin')) {
@@ -35,7 +31,7 @@ export class RewardsAdminComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    this.getAllRewards();
+    this.getAllExercises();
     this.editForm = this.formBuilder.group({
       title: ['', Validators.required],
       points: [0, Validators.required],
@@ -58,13 +54,12 @@ export class RewardsAdminComponent implements OnInit {
     return this.addForm.controls;
   }
 
-  getAllRewards() {
-    this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
-    console.log(this.rewardsService.getAllRewards());
+  getAllExercises() {
+    this.exercisesService.getAllExercises().then(data => this.exercisesList = data);
   }
   remove(id, item) {
-    this.rewardsService.deleteReward(id).then(data => {
-      this.rewardsList.splice(this.rewardsList.indexOf(item), 1);
+    this.exercisesService.deleteExercise(id).then(data => {
+      this.exercisesList.splice(this.exercisesList.indexOf(item), 1);
     });
   }
   add() {
@@ -95,7 +90,7 @@ export class RewardsAdminComponent implements OnInit {
       image = '';
     }
     const addItem = {title: this.c.title.value, description: this.c.description.value, image: image, points: this.c.points.value};
-    this.rewardsService.addReward(addItem).then(data => {
+    this.exercisesService.addExercise(addItem).then(data => {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
@@ -110,14 +105,14 @@ export class RewardsAdminComponent implements OnInit {
     }
     this.loading = true;
     let image = this.f.image.value;
-    if(image == null) {
+    if (image == null) {
       image = '';
     }
     this.editItem.title = this.f.title.value;
     this.editItem.description = this.f.description.value;
     this.editItem.image = image;
     this.editItem.points = this.f.points.value;
-    this.rewardsService.updateReward(this.editItem._id, this.editItem).then(data => {
+    this.exercisesService.updateExercise(this.editItem._id, this.editItem).then(data => {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;
@@ -128,21 +123,21 @@ export class RewardsAdminComponent implements OnInit {
     // console.log(filter);
     if (filter == 1) {
       if (this.hideItems == true) {
-        this.rewardsListByName.sort((a, b) => {
+        this.exercisesListByName.sort((a, b) => {
           return a.points - b.points;
         });
       } else {
-        this.rewardsList.sort((a, b) => {
+        this.exercisesList.sort((a, b) => {
           return a.points - b.points;
         });
       }
     } else {
       if (this.hideItems == true) {
-        this.rewardsListByName.sort((a, b) => {
+        this.exercisesListByName.sort((a, b) => {
           return b.points - a.points;
         });
       } else {
-        this.rewardsList.sort((a, b) => {
+        this.exercisesList.sort((a, b) => {
           return b.points - a.points;
         });
       }
@@ -154,11 +149,11 @@ export class RewardsAdminComponent implements OnInit {
     if (name !== '') {
       this.hideItems = true;
       // this.openBreweryItems$ = of(true);
-      this.rewardsListByName = [];
+      this.exercisesListByName = [];
 
-      for (const x in this.rewardsList) {
-        if ((this.rewardsList[x]['title'].toLowerCase()).match(name.toLowerCase())) {
-          this.rewardsListByName.push(this.rewardsList[x]);
+      for (const x in this.exercisesList) {
+        if ((this.exercisesList[x]['title'].toLowerCase()).match(name.toLowerCase())) {
+          this.exercisesListByName.push(this.exercisesList[x]);
         }
       }
 

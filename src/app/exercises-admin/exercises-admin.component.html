@@ -3,12 +3,12 @@
     <div class="d-flex flex-row  w-100 fg">
       <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
              #rewardSearch
-             (keyup)="search(rewardSearch.value)"/>
+             (keyup)="search(exerciseSearch.value)"/>
       <button class="btn reward-search-button input-50">Search</button>
     </div>
     <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
             #filterRewards
-            (change)="filter(filterRewards.value)">
+            (change)="filter(filterExercises.value)">
       <option value="0" selected hidden>&nbsp; Filter op:</option>
       <option value="1">Punten (laag -> hoog)</option>
       <option value="2">Punten (hoog -> laag)</option>
@@ -19,7 +19,7 @@
   <div class="rewards">
     <div class="mt-5 cards-rewards">
       <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of rewardsList"
+        <div *ngFor="let item of excercisesList"
              class="reward col-lg-4 col-md-6 my-3">
           <div class="card">
             <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of rewardsListByName"
+        <div *ngFor="let item of excercisesListByName"
              class="reward col-lg-4 col-md-6 my-3">
           <div class="card">
             <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
@@ -72,8 +72,8 @@
               </div>
             </div>
             <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active" (mouseleave)="toggleClass(item)">
-              <button (click)="edit(item, $event.target)" class="btn btn-secondary">Edit</button>
-              <button (click)="remove(item?._id, item)" class="btn btn-secondary">Remove</button>
+              <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
+              <button (click)="remove(item?._id)" class="btn btn-secondary">Remove</button>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
       <div class="modal-content">
         <div class="modal-header">
 
-          <h5 class="modal-title" id="addModalLabel">Add Reward</h5>
+          <h5 class="modal-title" id="addModalLabel">Add Excercies</h5>
           <button type="button" class="close" (click)="addmodal = false" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -190,8 +190,3 @@
   </div>
 
 </div>
-
-
-
-
-
