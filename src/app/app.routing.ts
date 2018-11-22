@@ -7,14 +7,11 @@ import {AuthGuard} from './_guards';
 import {RewardsOverviewComponent} from './rewards-overview/rewards-overview.component';
 import {PurchasesOverviewComponent} from './purchases-overview/purchases-overview.component';
 import {RewardsAdminComponent} from './rewards-admin/rewards-admin.component';
-import {RewardsDetailComponent} from "./rewards-detail/rewards-detail.component";
-import {ExercisesOverviewComponent} from "./exercises-overview/exercises-overview.component";
-import {ExercisesDetailComponent} from "./exercises-detail/exercises-detail.component";
-// import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
-// import {UsersAdminComponent} from './users-admin/users-admin.component';
+import {RewardsDetailComponent} from './rewards-detail/rewards-detail.component';
+import {ExercisesOverviewComponent} from './exercises-overview/exercises-overview.component';
+import {ExercisesDetailComponent} from './exercises-detail/exercises-detail.component';
 import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
-import {UsersAdminComponent} from './users-admin/users-admin.component';
-
+import {ExercisesAdminComponent} from './exercises-admin/exercises-admin.component';
 
 const appRoutes: Routes = [
   // otherwise redirect to home
@@ -29,7 +26,7 @@ const appRoutes: Routes = [
   {path: 'exercises/detail/:id', component: ExercisesDetailComponent, canActivate: [AuthGuard]},
   {path: 'rewards-admin', component: RewardsAdminComponent, canActivate: [AuthGuard]},
   {path: 'applications-admin', component: ApplicationsAdminComponent, canActivate: [AuthGuard]},
-  {path: 'users-admin', component: UsersAdminComponent, canActivate: [AuthGuard]},
+  {path: 'exercises-admin', component: ExercisesAdminComponent, canActivate: [AuthGuard]},
   {path: 'logout', component: LoginComponent},
 
   {path: '**', redirectTo: 'exercises'},

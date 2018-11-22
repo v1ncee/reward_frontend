@@ -99,18 +99,34 @@
 }
 
 .myModal{
-  display:none;
 
+  position:fixed;
+  top:-100% !important;
+  opacity:0 !important;
+  transition:all 0.5s !important;
+  width:20%;
+  left:40%;
 }
 .opModal{
   opacity:100 !important;
-  display:block !important;
-  top:50% !important;
-  transition:opacity 0.5s, top 0.5s !important;
+  display: block !important;
+  position:fixed;
+  top:20% !important;
+}
+.modal-header{
+  background-color: #333333;
+  color:white;
 }
 @media only screen and (max-width: 600px) {
   .card-img-bottom {
     height: 80vw !important;
+  }
+  .myModal{
+    width:80%;
+    left:10%;
+  }
+  .opModal{
+    top:10%;
   }
 }
 //.card-columns {
