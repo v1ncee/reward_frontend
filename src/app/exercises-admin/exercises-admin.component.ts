@@ -89,7 +89,7 @@ export class ExercisesAdminComponent implements OnInit {
     if (image == null) {
       image = '';
     }
-    const addItem = {title: this.c.title.value, description: this.c.description.value, image: image, points: this.c.points.value};
+    const addItem = {title: this.c.title.value, description: this.c.description.value, points: this.c.points.value, image: image, comment: ''};
     this.exercisesService.addExercise(addItem).then(data => {
       this.loading = false;
       this.addmodal = false;
