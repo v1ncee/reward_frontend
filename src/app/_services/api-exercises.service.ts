@@ -33,7 +33,9 @@ export class ApiExercisesService {
     return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise().then(() => console.log('exercise updated'));
   }
   addExercise(exercise) {
-    return this.http.post(this.URLExercises, exercise).toPromise().then(() => console.log('exercise added'));
+    return this.http.post(this.URLExercises, exercise).toPromise().then(data => {
+      return data;
+    });
   }
   deleteExercise(id) {
     console.log(id);

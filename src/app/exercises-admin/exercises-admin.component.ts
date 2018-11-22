@@ -94,6 +94,7 @@ export class ExercisesAdminComponent implements OnInit {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
+      this.exercisesList.push(data);
     });
   }
   onSubmitEdit() {
@@ -110,9 +111,11 @@ export class ExercisesAdminComponent implements OnInit {
     }
     this.editItem.title = this.f.title.value;
     this.editItem.description = this.f.description.value;
-    this.editItem.image = image;
     this.editItem.points = this.f.points.value;
-    this.exercisesService.updateExercise(this.editItem._id, this.editItem).then(data => {
+    this.editItem.image = image;
+    this.editItem.comment = 'test';
+    console.log(this.editItem);
+    this.exercisesService.updateExercise(this.editItem.id, this.editItem).then(data => {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;

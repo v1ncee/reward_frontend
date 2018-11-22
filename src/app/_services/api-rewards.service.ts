@@ -36,7 +36,9 @@ export class ApiRewardsService {
     return this.http.put(this.URLRewards + id, reward, httpOptions).toPromise().then(() => console.log("reward updated"));
   }
   addReward(reward) {
-    return this.http.post(this.URLRewards, reward).toPromise().then(() => console.log("reward added"));
+    return this.http.post(this.URLRewards, reward).toPromise().then(data => {
+      return data;
+    });
   }
   deleteReward(id) {
     console.log(id);

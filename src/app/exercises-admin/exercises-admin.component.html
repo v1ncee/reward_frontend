@@ -1,13 +1,13 @@
 <div class="container px-0">
   <div class="form-group d-flex flex-sm-row flex-column col-12">
     <div class="d-flex flex-row  w-100 fg">
-      <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
-             #rewardSearch
+      <input id="exercise" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
+             #exerciseSearch
              (keyup)="search(exerciseSearch.value)"/>
       <button class="btn reward-search-button input-50">Search</button>
     </div>
     <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
-            #filterRewards
+            #filterExercises
             (change)="filter(filterExercises.value)">
       <option value="0" selected hidden>&nbsp; Filter op:</option>
       <option value="1">Punten (laag -> hoog)</option>
@@ -19,7 +19,7 @@
   <div class="rewards">
     <div class="mt-5 cards-rewards">
       <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of excercisesList"
+        <div *ngFor="let item of exercisesList"
              class="reward col-lg-4 col-md-6 my-3">
           <div class="card">
             <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of excercisesListByName"
+        <div *ngFor="let item of exercisesListByName"
              class="reward col-lg-4 col-md-6 my-3">
           <div class="card">
             <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
