@@ -1,5 +1,8 @@
 <div class="w-100 nav-bar d-flex align-items-center">
-  <div class="w-100 nav-bar-title d-flex justify-content-between align-items-center px-sm-4 px-3"><span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span> <span class="mr-sm-5 pr-sm-2 mr-0 pr-0 font-weight-normal"><strong>{{(user$ | async)?.points}}</strong> points</span></div>
+  <div class="w-100 nav-bar-title d-flex justify-content-between align-items-center px-sm-4 px-3"><span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span>
+    <span
+      class="mr-sm-5 pr-sm-2 mr-0 pr-0 font-weight-normal"><strong>{{(user$ | async)?.points}}</strong> points</span>
+  </div>
 </div>
 
 <div class="d-flex flex-column position-fixed sidebar" [ngClass]="{'open': open}">
@@ -8,18 +11,23 @@
       <i class="fas fa-bars text-white" [ngbCollapse]="open"></i>
       <i class="fas fa-times text-white" [ngbCollapse]="!open"></i>
     </div>
-    <div *ngIf="authCheck && userCheck">
-      <div class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
-      <div class="nav-icon" routerLink="/rewards-admin" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
-      <div class="nav-icon" routerLink="/exercises-admin" routerLinkActive="active"><i class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
-      <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
-    </div>
-    <div *ngIf="!authCheck && userCheck">
-      <div class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
-      <div class="nav-icon" routerLink="/exercises" routerLinkActive="active"><i class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
-      <div class="nav-icon" routerLink="/purchases" routerLinkActive="active"><i class="fas fa-history"></i><span [ngbCollapse]="!open">History</span></div>
-      <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
-    </div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i
+      class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/rewards-admin" routerLinkActive="active"><i
+      class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/exercises-admin" routerLinkActive="active"><i
+      class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
+      class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
+
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i
+      class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/exercises" routerLinkActive="active"><i
+      class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/purchases" routerLinkActive="active"><i
+      class="fas fa-history"></i><span [ngbCollapse]="!open">History</span></div>
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
+      class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
     <div *ngIf="!userCheck">
     </div>
   </div>
