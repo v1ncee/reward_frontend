@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
   toggleOpen() { }
   authChecking() {
-    if (localStorage.getItem('currentUser') {
+    if (localStorage.getItem('currentUser')) {
       this.authCheck = this.auth.checkPermission('admin');
       this.userCheck = true;
     } else {
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
 
   getUser() {
     const jwtHelper = new JwtHelperService();
-    if (localStorage.getItem('currentUser') {
+    if (localStorage.getItem('currentUser')) {
     const id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
     this.userService.getById(id).then(data => this.user$ = of(data));
     }

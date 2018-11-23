@@ -62,9 +62,10 @@ export class RewardsAdminComponent implements OnInit {
     this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
     console.log(this.rewardsService.getAllRewards());
   }
-  remove(id, item) {
-    this.rewardsService.deleteReward(id).then(data => {
-      this.rewardsList.splice(this.rewardsList.indexOf(item), 1);
+  remove(item) {
+    this.editItem = item;
+    this.rewardsService.deleteReward(item.id).then(data => {
+      this.rewardsList.splice(this.rewardsList.indexOf(this.editItem), 1);
     });
   }
   add() {
@@ -111,7 +112,7 @@ export class RewardsAdminComponent implements OnInit {
     }
     this.loading = true;
     let image = this.f.image.value;
-    if(image == null) {
+    if (image == null) {
       image = '';
     }
     this.editItem.title = this.f.title.value;
