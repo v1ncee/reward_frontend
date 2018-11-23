@@ -28,7 +28,11 @@ export class AuthenticationService {
     }
 
     isLoggedIn() {
-      if (JSON.parse(localStorage.getItem('currentUser')).token !== null) {return true} else {return false}
+      if(localStorage.getItem('currentUser')) {
+        if (JSON.parse(localStorage.getItem('currentUser')).token !== null) {return true} else {return false}
+      }else {
+        return false;
+      }
     }
 
     checkPermission(permission: string) {
