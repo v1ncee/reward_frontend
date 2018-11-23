@@ -21,8 +21,8 @@ export class RewardItemComponent implements OnInit {
   }
 
   claim(id, points){
-    console.log(id);
-    console.log(points);
+    console.log("id reward: "+ id);
+    console.log("punten reward: " + points);
     const jwtHelper = new JwtHelperService();
     const userid = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
     this.userService.getById(userid)
@@ -34,7 +34,7 @@ export class RewardItemComponent implements OnInit {
           this.user.points -= points;
           console.log("user-reward: " + this.user.points);
           this.user.purchases.push(id);
-          this.userService.update(this.user);
+          this.userService.update(this.user); //tussentabel nodig gebruiker kan niet updaten alleen admin kan dat
         }
       });
 }
