@@ -18,6 +18,6 @@
 
   <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item.active" (mouseleave)="toggleClass(item)">
     <a routerLink="/rewards/detail/{{item.id}}" class="btn btn-secondary">Details</a>
-    <a routerLink="/home" class="btn btn-secondary" (click)="claim(item.id, item.points, item)">Claim</a>
+    <a class="btn btn-secondary" (click)="claim(item.id, item.points)">Claim</a>
   </div>
 </div>

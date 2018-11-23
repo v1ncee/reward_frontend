@@ -1,13 +1,20 @@
-<h4>Purchases</h4>
-
-<hr>
-<div class="progress" *ngIf="loading">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 100%"></div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of (purchases)">
-    <app-purchase-item [item]="item"></app-purchase-item>
+<div class="container px-0">
+  <div class="col-12 px-0">
+    <div class=" col-12">
+      <h3 class="text-uppercase">Points <span class="badge badge-dark">{{(user$ | async)?.points}}</span></h3>
+    </div>
+    <div class="cards-rewards mt-5 col-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Purchase history</strong>
+      </div>
+      <div class="py-3 d-flex flex-row flex-wrap">
+          <app-purchase-item *ngFor="let item of (purchases)" [item]="item" class="col-lg-4 col-sm-6">
+          </app-purchase-item>
+      </div>
+    </div>
+    </div>
   </div>
 </div>
-<hr>
+
 

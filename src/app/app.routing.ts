@@ -12,6 +12,7 @@ import {ExercisesOverviewComponent} from './exercises-overview/exercises-overvie
 import {ExercisesDetailComponent} from './exercises-detail/exercises-detail.component';
 import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
 import {ExercisesAdminComponent} from './exercises-admin/exercises-admin.component';
+import {LeaderboardComponent} from './leaderboard/leaderboard.component';
 
 const appRoutes: Routes = [
   // otherwise redirect to home
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'applications-admin', component: ApplicationsAdminComponent, canActivate: [AuthGuard]},
   {path: 'exercises-admin', component: ExercisesAdminComponent, canActivate: [AuthGuard]},
   {path: 'logout', component: LoginComponent},
+  {path: 'leaderboard', component: LeaderboardComponent},
 
   {path: '**', redirectTo: 'exercises'},
 ];

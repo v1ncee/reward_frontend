@@ -4,7 +4,7 @@
       <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
              #rewardSearch
              (keyup)="search(rewardSearch.value, filterRewards.value)"/>
-      <button class="btn reward-search-button input-50">Search</button>
+      <div class="reward-search-button input-50 d-flex align-items-center">Search</div>
     </div>
     <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2 fg"
             #filterRewards
