@@ -8,9 +8,18 @@
       <i class="fas fa-bars text-white" [ngbCollapse]="open"></i>
       <i class="fas fa-times text-white" [ngbCollapse]="!open"></i>
     </div>
-    <div class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
-    <div class="nav-icon" routerLink="/users-admin" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
-    <div class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i class="fas fa-user"></i><span [ngbCollapse]="!open">Users</span></div>
-    <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
+    <div *ngIf="authCheck && userCheck">
+      <div class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
+      <div class="nav-icon" routerLink="/rewards-admin" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
+      <div class="nav-icon" routerLink="/exercises-admin" routerLinkActive="active"><i class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+      <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
+    </div>
+    <div *ngIf="!authCheck && userCheck">
+      <div class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
+      <div class="nav-icon" routerLink="/exercises" routerLinkActive="active"><i class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+      <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
+    </div>
+    <div *ngIf="!userCheck">
+    </div>
   </div>
 </div>
