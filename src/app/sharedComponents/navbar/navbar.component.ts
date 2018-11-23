@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ja');
     this.getUser();
     this.authChecking();
   }
