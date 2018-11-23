@@ -99,6 +99,7 @@ export class RewardsAdminComponent implements OnInit {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
+      this.rewardsList.push(data);
     });
   }
   onSubmitEdit() {
@@ -117,7 +118,7 @@ export class RewardsAdminComponent implements OnInit {
     this.editItem.description = this.f.description.value;
     this.editItem.image = image;
     this.editItem.points = this.f.points.value;
-    this.rewardsService.updateReward(this.editItem._id, this.editItem).then(data => {
+    this.rewardsService.updateReward(this.editItem.id, this.editItem).then(data => {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;

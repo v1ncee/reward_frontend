@@ -5,7 +5,14 @@
   </div>
 
   <div class="position-relative">
-    <img class="card-img-bottom" src="https://gorillasports.nl/img/products/100694137/2010/dumbellset-30-kg-gietijzer-zwart.jpg" alt="Card image cap">
+    <div *ngIf="item?.image == null || item?.image == ''">
+      <img class="card-img-bottom "
+           src="https://gorillasports.nl/img/products/100694137/2010/dumbellset-30-kg-gietijzer-zwart.jpg"
+           alt="Card image cap">
+    </div>
+    <div *ngIf="item?.image != null && item.image != ''">
+      <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+    </div>
     <div class="overlay-reward-img">
       {{item.points}}
     </div>

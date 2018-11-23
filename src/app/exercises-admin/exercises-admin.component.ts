@@ -89,11 +89,12 @@ export class ExercisesAdminComponent implements OnInit {
     if (image == null) {
       image = '';
     }
-    const addItem = {title: this.c.title.value, description: this.c.description.value, image: image, points: this.c.points.value};
+    const addItem = {title: this.c.title.value, description: this.c.description.value, points: this.c.points.value, image: image, comment: ''};
     this.exercisesService.addExercise(addItem).then(data => {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
+      this.exercisesList.push(data);
     });
   }
   onSubmitEdit() {
@@ -110,9 +111,11 @@ export class ExercisesAdminComponent implements OnInit {
     }
     this.editItem.title = this.f.title.value;
     this.editItem.description = this.f.description.value;
-    this.editItem.image = image;
     this.editItem.points = this.f.points.value;
-    this.exercisesService.updateExercise(this.editItem._id, this.editItem).then(data => {
+    this.editItem.image = image;
+    this.editItem.comment = 'test';
+    console.log(this.editItem);
+    this.exercisesService.updateExercise(this.editItem.id, this.editItem).then(data => {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;

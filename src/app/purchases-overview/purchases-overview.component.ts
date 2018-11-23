@@ -12,7 +12,7 @@ export class PurchasesOverviewComponent implements OnInit {
 
   loading = false;                                    // (1)
   purchases;                // (2)
-  constructor(private apixdbService: ApidbService) {   // (3)
+  constructor(private apidbService: ApidbService) {   // (3)
   }
 
   ngOnInit() {
@@ -21,8 +21,8 @@ export class PurchasesOverviewComponent implements OnInit {
 
   getPurchases() {
     this.loading = true;
-    this.apixdbService.getOverviewPurchases()
+    this.apidbService.getOverviewPurchases()
       .then( data => this.purchases = data)
-      .then(data => {this.loading = false;});
+      .then(data => {console.log(data); this.loading = false;});
   }
 }
