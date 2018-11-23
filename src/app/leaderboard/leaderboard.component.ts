@@ -8,14 +8,36 @@ import { UserService } from "../_services/user.service";
 })
 export class LeaderboardComponent implements OnInit {
 
-  exercisesList;
-  exercisesListByName;
+  usersList;
+  firstPlace;
+  secondPlace;
+  thirdPlace;
 
   constructor(private userService: UserService) { 
 
   }
 
   ngOnInit() {
+    this.getAllFromFourth();
+  }
+
+  getFirstPlace(){
+
+  }
+
+  getSecondPlace(){
+    
+  }
+
+  getThirdPlace(){
+    
+  }
+
+
+
+  getAllFromFourth() {
+    this.userService.getAll().toPromise().then(data => this.usersList = data);
+    console.log(this.usersList);
   }
 
 }

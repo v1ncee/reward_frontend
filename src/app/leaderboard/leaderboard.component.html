@@ -1,5 +1,22 @@
 <div class="container">
     <h2>Leaderboard</h2>
-
-    
+    <div class="podium">
+        <div class="tweede"></div>
+        <div class="eerste"><img src="../../assets/images/eerste.png" alt=""></div>
+        <div class="derde"></div>
+    </div>
+    <div class="leaderboard">
+        <table class="table">
+            <tr >
+              <th style="width: 20%">Place:</th>
+              <th style="width: 40%">Name:</th>
+              <th style="width: 40%">Points:</th>
+            </tr>
+            <tr *ngFor="let item of items">
+              <td>{{item.name}}</td>
+              <td>{{item.firstName}} {{item.lastName}}</td>
+              <td>{{item.points}}</td>
+            </tr>
+          </table>
+    </div>
 </div>
