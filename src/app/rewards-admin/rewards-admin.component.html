@@ -43,7 +43,7 @@
             </div>
             <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active" (mouseleave)="toggleClass(item)">
               <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
-              <button (click)="remove(item?.id)" class="btn btn-secondary">Remove</button>
+              <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
             </div>
           </div>
         </div>
@@ -72,8 +72,8 @@
               </div>
             </div>
             <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active" (mouseleave)="toggleClass(item)">
-              <button (click)="edit(item, $event.target)" class="btn btn-secondary">Edit</button>
-              <button (click)="remove(item?.id, item)" class="btn btn-secondary">Remove</button>
+              <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
+              <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
             </div>
           </div>
         </div>
