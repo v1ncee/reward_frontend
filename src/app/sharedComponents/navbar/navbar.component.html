@@ -17,6 +17,7 @@
     <div *ngIf="!authCheck && userCheck">
       <div class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
       <div class="nav-icon" routerLink="/exercises" routerLinkActive="active"><i class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+      <div class="nav-icon" routerLink="/purchases" routerLinkActive="active"><i class="fas fa-history"></i><span [ngbCollapse]="!open">History</span></div>
       <div class="nav-icon" routerLink="/logout" routerLinkActive="active"><i class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
     </div>
     <div *ngIf="!userCheck">

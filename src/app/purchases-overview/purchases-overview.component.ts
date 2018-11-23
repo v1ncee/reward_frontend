@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApidbService } from '../services/apidb.service';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import {UserService} from "../_services";
 
 @Component({
   selector: 'app-puchases',
@@ -10,9 +11,9 @@ import { finalize } from 'rxjs/operators';
 })
 export class PurchasesOverviewComponent implements OnInit {
 
-  loading = false;                                    // (1)
-  purchases;                // (2)
-  constructor(private apidbService: ApidbService) {   // (3)
+  loading = false;
+  purchases;
+  constructor(private apidbService: ApidbService, private userService: UserService) {
   }
 
   ngOnInit() {
