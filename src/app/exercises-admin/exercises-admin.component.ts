@@ -57,9 +57,10 @@ export class ExercisesAdminComponent implements OnInit {
   getAllExercises() {
     this.exercisesService.getAllExercises().then(data => this.exercisesList = data);
   }
-  remove(id, item) {
-    this.exercisesService.deleteExercise(id).then(data => {
-      this.exercisesList.splice(this.exercisesList.indexOf(item), 1);
+  remove(item) {
+    this.editItem = item;
+    this.exercisesService.deleteExercise(item.id).then(data => {
+      this.exercisesList.splice(this.exercisesList.indexOf(this.editItem), 1);
     });
   }
   add() {
