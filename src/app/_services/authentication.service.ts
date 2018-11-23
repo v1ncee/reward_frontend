@@ -26,7 +26,6 @@ export class AuthenticationService {
 
         this.isLogged$ = of(true);
         console.log(this.isLogged$);
-        location.reload();
 
         return user;
       }));
@@ -38,7 +37,7 @@ export class AuthenticationService {
     this.isLogged$ = of(false);
     // if (this.times == 0) {
     this.router.navigate(["login"]);
-    // location.reload();
+    //location.reload();
 
     // } else {
     //   this.times = 0;
