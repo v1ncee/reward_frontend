@@ -17,6 +17,8 @@
       class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/exercises-admin" routerLinkActive="active"><i
       class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/leaderboard" routerLinkActive="active"><i
+      class="fas fa-trophy"></i><span [ngbCollapse]="!open">Leaderboard</span></div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
       class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
 
@@ -26,6 +28,8 @@
       class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
     <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/purchases" routerLinkActive="active"><i
       class="fas fa-history"></i><span [ngbCollapse]="!open">History</span></div>
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/leaderboard" routerLinkActive="active"><i
+      class="fas fa-trophy"></i><span [ngbCollapse]="!open">Leaderboard</span></div>
     <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
       class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
     <div *ngIf="!userCheck">

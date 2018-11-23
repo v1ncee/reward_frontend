@@ -28,6 +28,11 @@
           <a [routerLink]="['/register']" class="btn btn-link text-dark">Register</a>
         </div>
       </form>
+      <p>
+        <ngb-alert *ngIf="closeAlert == false" [dismissible]="true" [type]="'warning'" (close)="closeAlert = true">
+          <strong>Oooops!</strong> Something went wrong... Please check your username/password.
+        </ngb-alert>
+      </p>
     </div>
   </div>
 </div>

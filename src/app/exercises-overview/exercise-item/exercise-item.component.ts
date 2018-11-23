@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Exercise} from '../../_models/exercise';
 
 @Component({
   selector: 'app-exercise-item',
@@ -7,15 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ExerciseItemComponent implements OnInit {
 
-  @Input() item: any;
+
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  toggleClass(item){
-    item.active = !item.active;
-  }
+
 
 }
