@@ -28,6 +28,7 @@ import { RewardsDetailComponent } from './rewards-detail/rewards-detail.componen
 import { ExerciseItemComponent } from './exercises-overview/exercise-item/exercise-item.component';
 import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.component';
 import { ExercisesAdminComponent } from './exercises-admin/exercises-admin.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ExercisesAdminComponent } from './exercises-admin/exercises-admin.compo
     ExerciseItemComponent,
     ExercisesDetailComponent,
     ExercisesAdminComponent,
+    LeaderboardComponent,
   ],
   providers: [
     AuthGuard,
