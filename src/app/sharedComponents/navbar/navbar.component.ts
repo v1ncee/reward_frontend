@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
   toggleOpen() { }
   authChecking() {
-    if (localStorage.getItem('currentUser') {
+    if (localStorage.getItem('currentUser')) {
       this.authCheck = this.auth.checkPermission('admin');
       this.userCheck = true;
     } else {
