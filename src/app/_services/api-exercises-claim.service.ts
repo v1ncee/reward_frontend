@@ -30,10 +30,15 @@ export class ApiExercisesClaimService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })};
+    console.log('ok');
     return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise().then(() => console.log('exercise Claim updated'));
   }
   addExerciseClaim(item) {
-    return this.http.put(this.URLExercises, item).toPromise().then(() => console.log('exercise Claim added'));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })};
+    return this.http.post(this.URLExercises, item, httpOptions).toPromise().then(() => console.log('exercise Claim added'));
   }
   deleteExerciseClaim(item) {
     return this.http.delete(this.URLExercises + item).toPromise();

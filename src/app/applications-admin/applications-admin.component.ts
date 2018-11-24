@@ -37,14 +37,15 @@ export class ApplicationsAdminComponent implements OnInit {
   accept(item) {
     item.status = 'CLAIMED';
     this.exerciseClaim = item;
-    this.exercisesClaimService.updateExerciseClaim(item.id, this.exercisesClaimService).then(data => {
+    console.log(this.exerciseClaim);
+    this.exercisesClaimService.updateExerciseClaim(item.id, this.exerciseClaim).then(data => {
       console.log(data);
     });
   }
   decline(item) {
     item.status = 'NOT-CLAIMED';
     this.exerciseClaim = item;
-    this.exercisesClaimService.updateExerciseClaim(item.id, this.exercisesClaimService).then(data => {
+    this.exercisesClaimService.updateExerciseClaim(item.id, this.exerciseClaim).then(data => {
       console.log(data);
     });
   }

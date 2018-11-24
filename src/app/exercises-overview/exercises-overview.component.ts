@@ -52,7 +52,7 @@ export class ExercisesOverviewComponent implements OnInit {
     if (localStorage.getItem('currentUser')) {
        id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
     }
-    const exerciseClaim = {user: id, exercise: this.editItem.id, comment: this.editItem.comment, status: 'PENDING'};
+    const exerciseClaim = {user: id, exercise: this.editItem.id, comment: this.editItem.comment};
     console.log(exerciseClaim);
     this.exercisesClaimService.addExerciseClaim(exerciseClaim).then( data => {
       this.loading = false;
