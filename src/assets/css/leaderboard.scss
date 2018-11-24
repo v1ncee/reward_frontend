@@ -1,55 +1,64 @@
-.podium{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+.podium {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 600px;
 }
 
-.eerste{
-    height: 200px;
-    margin: 0 5px;
-    text-align: center;
-    background-color: black;
-    width: 200px;
-    padding: 2px;
+.eerste {
+  background-color: #333;
+  height: 200px;
+  text-align: center;
 }
 
-.eerste img{
-    width: 70px;
-    position: relative;
-    top: 50px;
+.eerste img {
+  width: 70px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.tweede img{
-    width: 70px;
-    position: relative;
-    top: 30px;
+.tweede img {
+  width: 70px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.derde img{
-    width: 70px;
-    position: relative;
-    top: 10px;
-}
-.tweede{
-    height: 150px;
-    background-color: black;
-    width: 200px;
-    padding: 2px;
-    text-align: center;
+.derde img {
+  width: 70px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.derde{
-    height: 100px;
-    background-color: black;
-    width: 200px;
-    padding: 2px;
-    text-align: center;
+.tweede {
+  background-color: #333;
+  height: 150px;
+  padding: 2px;
+  text-align: center;
 }
 
-.leaderboard{
-    margin-top: 50px;
+.derde {
+  background-color: #333;
+  height: 100px;
+  padding: 2px;
+  text-align: center;
 }
 
-.scoreboard p{
-    text-align: center;
+.leaderboard {
+  margin-top: 50px;
+}
+
+.scoreboard p {
+  text-align: center;
+}
+
+.scoreboard {
+  width: 32%;
+  max-width: 200px;
+}
+
+.table-box-shadow {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
 }
