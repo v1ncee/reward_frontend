@@ -1,16 +1,27 @@
 <div class="content">
   <div class="container">
-    <h2>Leaderboard</h2>
     <div class="podium">
-      <div class="tweede"></div>
-      <div class="eerste"><img src="../../assets/images/eerste.png" alt=""></div>
-      <div class="derde"></div>
+
+        <div class="scoreboard">
+            <p>{{secondPlace?.firstName}}</p> 
+            <p>points: {{secondPlace?.points}}</p> 
+            <div class="tweede"><img src="../../assets/images/tweede.png" alt=""></div>
+        </div>
+        <div class="scoreboard">
+            <p>{{firstPlace?.firstName}}</p>
+            <p>points: {{firstPlace?.points}}</p>
+            <div class="eerste"><img src="../../assets/images/eerste.png" alt=""></div>
+        </div>
+        <div class="scoreboard">
+            <p>{{thirdPlace?.firstName}}</p>
+            <p>points: {{thirdPlace?.points}}</p>
+            <div class="derde"><img src="../../assets/images/derde.png" alt=""></div>
+        </div>
+
     </div>
-    <p>
-      {{firstPlace?.firstName}}
-      {{firstPlace?.points}}
-    </p>
     <div class="leaderboard">
+       
+
       <table class="table">
         <tr>
           <th style="width: 20%">Place:</th>
@@ -23,6 +34,7 @@
           <td>{{item?.points}}</td>
         </tr>
       </table>
+
     </div>
   </div>
 </div>
