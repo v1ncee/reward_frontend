@@ -1,33 +1,134 @@
-<div class="container px-0">
-  <div class="form-group d-flex flex-sm-row flex-column col-12">
-    <div class="d-flex flex-row mt-2 w-100 fg">
-      <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
-             #rewardSearch
-             (keyup)="search(rewardSearch.value, filterRewards.value)"/>
-      <button class="btn reward-search-button input-50">Search</button>
+<div class="content">
+  <div class="container px-0">
+    <div class="form-group d-flex flex-sm-row flex-column col-12">
+      <div class="d-flex flex-row mt-2 w-100 fg">
+        <input id="reward" type="text" class="form-control reward-search-input input-50"
+               placeholder="Search an exercise..."
+               #rewardSearch
+               (keyup)="search(rewardSearch.value, filterRewards.value)"/>
+        <button class="btn reward-search-button input-50 d-flex align-items-center">Search</button>
+      </div>
+      <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2 fg"
+              #filterRewards
+              (change)="filter(filterRewards.value)">
+        <option value="0" selected hidden>&nbsp; Filter op:</option>
+        <option value="1">Punten (laag -> hoog)</option>
+        <option value="2">Punten (hoog -> laag)</option>
+      </select>
     </div>
-    <select name="filter-rewards" id="filter-rewards" class="input-50 mt-2 fg"
-            #filterRewards
-            (change)="filter(filterRewards.value)">
-      <option value="0" selected hidden>&nbsp; Filter op:</option>
-      <option value="1">Punten (laag -> hoog)</option>
-      <option value="2">Punten (hoog -> laag)</option>
-    </select>
+
+    <!--<<<<<<< HEAD-->
+    <!--<div class="rewards">-->
+    <!--<div class="mt-5 cards-rewards">-->
+    <!--<div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">-->
+    <!--<app-exercise-item *ngFor="let item of exercisesList"-->
+    <!--[item]="item"-->
+    <!--class="col-lg-4 col-md-6 my-3">-->
+    <!--</app-exercise-item>-->
+    <!--</div>-->
+    <!--<div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">-->
+    <!--<app-exercise-item *ngFor="let item of exercisesListByName"-->
+    <!--[item]="item"-->
+    <!--class="col-lg-4 col-md-6 my-3">-->
+    <!--</app-exercise-item>-->
+    <!--</div>-->
+    <!--=======-->
+    <div class="rewards">
+      <div class="mt-5 cards-rewards">
+        <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
+          <div *ngFor="let item of exercisesList" class="col-lg-4 col-md-6 my-3">
+            <div class="card">
+              <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
+                {{item.title}}
+                <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
+                   (mouseleave)="toggleClass(item)"></i>
+              </div>
+
+              <div class="position-relative">
+                <div *ngIf="item?.image == null || item?.image == ''">
+                  <img class="card-img-bottom "
+                       src="https://gorillasports.nl/img/products/100694137/2010/dumbellset-30-kg-gietijzer-zwart.jpg"
+                       alt="Card image cap">
+                </div>
+                <div *ngIf="item?.image != null && item.image != ''">
+                  <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+                </div>
+                <div class="overlay-reward-img">
+                  {{item.points}}
+                </div>
+              </div>
+
+              <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item.active"
+                   (mouseleave)="toggleClass(item)">
+                <button routerLink="/exercises/detail/{{item.id}}" class="btn btn-secondary">Details</button>
+                <button (click)="register(item)" class="btn btn-secondary">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
+          <div *ngFor="let item of exercisesListByName" class="col-lg-4 col-md-6 my-3">
+            <div class="card">
+              <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
+                {{item.title}}
+                <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
+                   (mouseleave)="toggleClass(item)"></i>
+              </div>
+
+              <div class="position-relative">
+                <div *ngIf="item?.image == null || item?.image == ''">
+                  <img class="card-img-bottom "
+                       src="https://gorillasports.nl/img/products/100694137/2010/dumbellset-30-kg-gietijzer-zwart.jpg"
+                       alt="Card image cap">
+                </div>
+                <div *ngIf="item?.image != null && item.image != ''">
+                  <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+                </div>
+                <div class="overlay-reward-img">
+                  {{item.points}}
+                </div>
+              </div>
+
+              <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item.active"
+                   (mouseleave)="toggleClass(item)">
+                <button routerLink="/exercises/detail/{{item.id}}" class="btn btn-secondary">Details</button>
+                <button (click)="register(item)" class="btn btn-secondary">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="rewards">
-    <div class="mt-5 cards-rewards">
-      <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
-        <app-exercise-item *ngFor="let item of exercisesList"
-                         [item]="item"
-                         class="col-lg-4 col-md-6 my-3">
-        </app-exercise-item>
-      </div>
-      <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
-        <app-exercise-item *ngFor="let item of exercisesListByName"
-                         [item]="item"
-                         class="col-lg-4 col-md-6 my-3">
-        </app-exercise-item>
+  <div class="myModal" id="addModal" [ngClass]="{'opModal': addmodal}" tabindex="-1" role="dialog"
+       aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="addModalLabel">Apply for Points</h5>
+          <button type="button" class="close" (click)="addmodal = false" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addForm" (ngSubmit)="onSubmitAdd()">
+            <div class="form-group">
+              <label for="comment">Comment</label>
+              <input type="text" formControlName="comment" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && c.comment.errors }"/>
+              <div *ngIf="submitted && c.comment.errors" class="invalid-feedback">
+              </div>
+            </div>
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">Submit</button>
+              <img *ngIf="loading"
+                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+            </div>
+          </form>
+          <!--&gt;>>>>>> f87431b5d76d5b78f1c3e1c64d774a15b88d2963-->
+        </div>
       </div>
     </div>
   </div>

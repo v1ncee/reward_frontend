@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   {path: 'applications-admin', component: ApplicationsAdminComponent, canActivate: [AuthGuard]},
   {path: 'exercises-admin', component: ExercisesAdminComponent, canActivate: [AuthGuard]},
   {path: 'logout', component: LoginComponent},
-  {path: 'leaderboard', component: LeaderboardComponent},
+  {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
 
   {path: '**', redirectTo: 'exercises'},
 ];

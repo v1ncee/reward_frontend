@@ -4,20 +4,14 @@
     align-items: flex-end;
 }
 
-
-.podium div{  
-    background-color: black;
-    width: 200px;
-    padding: 2px;
-    margin-top: 50px;
-}
-
 .eerste{
     height: 200px;
     margin: 0 5px;
     text-align: center;
+    background-color: black;
+    width: 200px;
+    padding: 2px;
 }
-
 
 .eerste img{
     width: 70px;
@@ -25,14 +19,37 @@
     top: 50px;
 }
 
+.tweede img{
+    width: 70px;
+    position: relative;
+    top: 30px;
+}
+
+.derde img{
+    width: 70px;
+    position: relative;
+    top: 10px;
+}
 .tweede{
     height: 150px;
+    background-color: black;
+    width: 200px;
+    padding: 2px;
+    text-align: center;
 }
 
 .derde{
     height: 100px;
+    background-color: black;
+    width: 200px;
+    padding: 2px;
+    text-align: center;
 }
 
 .leaderboard{
     margin-top: 50px;
+}
+
+.scoreboard p{
+    text-align: center;
 }

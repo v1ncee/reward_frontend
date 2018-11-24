@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiRewardsService} from "../_services/api-rewards.service";
-import {ApiExercisesService} from "../_services/api-exercises.service";
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import {ApiRewardsService} from '../_services/api-rewards.service';
+import {ApiExercisesService} from '../_services/api-exercises.service';
+import {ApiExercisesClaimService} from '../_services/api-exercises-claim.service';
+import {Exercise} from '../_models/exercise';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-exercises-overview',
@@ -10,17 +14,56 @@ import {ApiExercisesService} from "../_services/api-exercises.service";
 export class ExercisesOverviewComponent implements OnInit {
 
   // popupHidden = true;
+  editItem: Exercise;
   exercisesList;
   exercisesListByName;
+  addForm: FormGroup;
+  addmodal = false;
+  loading = false;
+  submitted = false;
   hideItems = false;
 
-  constructor(private exercisesService: ApiExercisesService) {
+  constructor(private exercisesService: ApiExercisesService, private exercisesClaimService: ApiExercisesClaimService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
     this.getAllExercises();
+    this.addForm = this.formBuilder.group({
+      comment: ['', Validators.required]
+    });
+  }
+  register(item) {
+    this.editItem = item;
+    this.addmodal = true;
+  }
+  get c() {
+    return this.addForm.controls;
+  }
+  onSubmitAdd() {
+    this.submitted = true;
+
+    if (this.addForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.editItem.comment = this.c.comment.value;
+    const jwtHelper = new JwtHelperService();
+    let id;
+    if (localStorage.getItem('currentUser')) {
+       id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
+    }
+    const exerciseClaim = {user: id, exercise: this.editItem.id, comment: this.editItem.comment, status: 'PENDING'};
+    console.log(exerciseClaim);
+    this.exercisesClaimService.addExerciseClaim(exerciseClaim).then( data => {
+      this.loading = false;
+      this.addmodal = false;
+      this.submitted = false;
+    });
   }
 
+  toggleClass(item) {
+    item.active = !item.active;
+  }
   filter(filter) {
     // console.log(filter);
     if (filter == 1) {

@@ -1,194 +1,199 @@
-<div class="container px-0">
-  <div class="form-group d-flex flex-sm-row flex-column col-12">
-    <div class="d-flex flex-row  w-100 fg">
-      <input id="reward" type="text" class="form-control reward-search-input input-50" placeholder="Search a reward..."
-             #rewardSearch
-             (keyup)="search(rewardSearch.value)"/>
-      <button class="btn reward-search-button input-50">Search</button>
+<div class="content">
+  <div class="container px-0">
+    <div class="form-group d-flex flex-sm-row flex-column col-12">
+      <div class="d-flex flex-row  w-100 fg">
+        <input id="reward" type="text" class="form-control reward-search-input input-50"
+               placeholder="Search a reward..."
+               #rewardSearch
+               (keyup)="search(rewardSearch.value)"/>
+        <button class="btn reward-search-button input-50">Search</button>
+      </div>
+      <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
+              #filterRewards
+              (change)="filter(filterRewards.value)">
+        <option value="0" selected hidden>&nbsp; Filter op:</option>
+        <option value="1">Punten (laag -> hoog)</option>
+        <option value="2">Punten (hoog -> laag)</option>
+      </select>
+      <button class="btn reward-search-button input-50 fg" (click)="add()">Add</button>
     </div>
-    <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
-            #filterRewards
-            (change)="filter(filterRewards.value)">
-      <option value="0" selected hidden>&nbsp; Filter op:</option>
-      <option value="1">Punten (laag -> hoog)</option>
-      <option value="2">Punten (hoog -> laag)</option>
-    </select>
-    <button class="btn reward-search-button input-50 fg" (click)="add()" >Add</button>
-  </div>
 
-  <div class="rewards">
-    <div class="mt-5 cards-rewards">
-      <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of rewardsList"
-             class="reward col-lg-4 col-md-6 my-3">
-          <div class="card">
-            <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-              {{item?.title}}
-              <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
-                 (mouseleave)="toggleClass(item)"></i>
-            </div>
+    <div class="rewards">
+      <div class="mt-5 cards-rewards">
+        <div *ngIf="!hideItems" class="d-flex flex-row flex-wrap px-0">
+          <div *ngFor="let item of rewardsList"
+               class="reward col-lg-4 col-md-6 my-3">
+            <div class="card">
+              <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
+                {{item?.title}}
+                <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
+                   (mouseleave)="toggleClass(item)"></i>
+              </div>
 
-            <div class="position-relative flex-wrap">
-              <div *ngIf="item?.image == null || item?.image == ''">
-                <img class="card-img-bottom "
-                     src="https://mediationamsterdam.nl/wp-content/uploads/2016/02/cadeau-1030x1030.jpg"
-                     alt="Card image cap">
+              <div class="position-relative flex-wrap">
+                <div *ngIf="item?.image == null || item?.image == ''">
+                  <img class="card-img-bottom "
+                       src="https://mediationamsterdam.nl/wp-content/uploads/2016/02/cadeau-1030x1030.jpg"
+                       alt="Card image cap">
+                </div>
+                <div *ngIf="item?.image != null && item.image != ''">
+                  <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+                </div>
+                <div class="overlay-reward-img">
+                  {{item?.points}}
+                </div>
               </div>
-              <div *ngIf="item?.image != null && item.image != ''">
-                <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
-              </div>
-              <div class="overlay-reward-img">
-                {{item?.points}}
+              <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active"
+                   (mouseleave)="toggleClass(item)">
+                <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
+                <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
               </div>
             </div>
-            <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active" (mouseleave)="toggleClass(item)">
-              <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
-              <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
+          </div>
+        </div>
+        <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
+          <div *ngFor="let item of rewardsListByName"
+               class="reward col-lg-4 col-md-6 my-3">
+            <div class="card">
+              <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
+                {{item?.title}}
+                <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
+                   (mouseleave)="toggleClass(item)"></i>
+              </div>
+
+              <div class="position-relative flex-wrap">
+                <div *ngIf="item?.image == null || item?.image == ''">
+                  <img class="card-img-bottom "
+                       src="https://mediationamsterdam.nl/wp-content/uploads/2016/02/cadeau-1030x1030.jpg"
+                       alt="Card image cap">
+                </div>
+                <div *ngIf="item?.image != null && item.image != ''">
+                  <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+                </div>
+                <div class="overlay-reward-img">
+                  {{item?.points}}
+                </div>
+              </div>
+              <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active"
+                   (mouseleave)="toggleClass(item)">
+                <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
+                <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div *ngIf="hideItems" class="d-flex flex-row flex-wrap px-0">
-        <div *ngFor="let item of rewardsListByName"
-             class="reward col-lg-4 col-md-6 my-3">
-          <div class="card">
-            <div class="card-header text-center font-weight-bold align-items-center text-uppercase position-relative">
-              {{item?.title}}
-              <i class="fas fa-ellipsis-v position-absolute reward-dots-button" (mouseenter)="toggleClass(item)"
-                 (mouseleave)="toggleClass(item)"></i>
-            </div>
+    </div>
 
-            <div class="position-relative flex-wrap">
-              <div *ngIf="item?.image == null || item?.image == ''">
-                <img class="card-img-bottom "
-                     src="https://mediationamsterdam.nl/wp-content/uploads/2016/02/cadeau-1030x1030.jpg"
-                     alt="Card image cap">
+    <div class="myModal" id="addModal" [ngClass]="{'opModal': addmodal}" tabindex="-1" role="dialog"
+         aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="addModalLabel">Add Reward</h5>
+            <button type="button" class="close" (click)="addmodal = false" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="addForm" (ngSubmit)="onSubmitAdd()">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" formControlName="title" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && c.title.errors }"/>
+                <div *ngIf="submitted && c.title.errors" class="invalid-feedback">
+                  <div *ngIf="c.title.errors.required">Title is required</div>
+                </div>
               </div>
-              <div *ngIf="item?.image != null && item.image != ''">
-                <img class="card-img-bottom " src="{{item?.image}}" alt="Card image cap">
+              <div class="form-group">
+                <label for="points">Points</label>
+                <input type="number" formControlName="points" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && c.points.errors }"/>
+                <div *ngIf="submitted && c.points.errors" class="invalid-feedback">
+                  <div *ngIf="c.points.errors.required">Points are required</div>
+                </div>
               </div>
-              <div class="overlay-reward-img">
-                {{item?.points}}
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" formControlName="description" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && c.description.errors }"/>
+                <div *ngIf="submitted && c.description.errors" class="invalid-feedback">
+                </div>
               </div>
-            </div>
-            <div class="btn-group-vertical popup-reward" [ngbCollapse]="!item?.active" (mouseleave)="toggleClass(item)">
-              <button (click)="edit(item)" class="btn btn-secondary">Edit</button>
-              <button (click)="remove(item)" class="btn btn-secondary">Remove</button>
-            </div>
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" formControlName="image" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && c.image.errors }"/>
+                <div *ngIf="submitted && c.image.errors" class="invalid-feedback">
+                </div>
+              </div>
+              <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">Add</button>
+                <img *ngIf="loading"
+                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="myModal" id="addModal" [ngClass]="{'opModal': addmodal}" tabindex="-1" role="dialog"
-       aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
+    <div class="myModal" id="editModal" [ngClass]="{'opModal': editmodal}" tabindex="-1" role="dialog"
+         aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
 
-          <h5 class="modal-title" id="addModalLabel">Add Reward</h5>
-          <button type="button" class="close" (click)="addmodal = false" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="addForm" (ngSubmit)="onSubmitAdd()">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" formControlName="title" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && c.title.errors }"/>
-              <div *ngIf="submitted && c.title.errors" class="invalid-feedback">
-                <div *ngIf="c.title.errors.required">Title is required</div>
+            <h5 class="modal-title" id="editModalLabel">{{editItem?.title}}</h5>
+            <button type="button" class="close" (click)="editmodal = false" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" formControlName="title" class="form-control" value="{{editItem?.title}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                  <div *ngIf="f.title.errors.required">Title is required</div>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="points">Points</label>
-              <input type="number" formControlName="points" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && c.points.errors }"/>
-              <div *ngIf="submitted && c.points.errors" class="invalid-feedback">
-                <div *ngIf="c.points.errors.required">Points are required</div>
+              <div class="form-group">
+                <label for="points">Points</label>
+                <input type="number" formControlName="points" class="form-control" value="{{editItem?.points}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.points.errors }"/>
+                <div *ngIf="submitted && f.points.errors" class="invalid-feedback">
+                  <div *ngIf="f.points.errors.required">Points are required</div>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <input type="text" formControlName="description" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && c.description.errors }"/>
-              <div *ngIf="submitted && c.description.errors" class="invalid-feedback">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" formControlName="description" class="form-control" value="{{editItem?.description}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="image">Image</label>
-              <input type="text" formControlName="image" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && c.image.errors }"/>
-              <div *ngIf="submitted && c.image.errors" class="invalid-feedback">
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" formControlName="image" class="form-control" value="{{editItem?.image}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.image.errors }"/>
+                <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <button [disabled]="loading" class="btn btn-primary">Add</button>
-              <img *ngIf="loading"
-                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="myModal" id="editModal" [ngClass]="{'opModal': editmodal}" tabindex="-1" role="dialog"
-       aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-
-          <h5 class="modal-title" id="editModalLabel">{{editItem?.title}}</h5>
-          <button type="button" class="close" (click)="editmodal = false" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" formControlName="title" class="form-control" value="{{editItem?.title}}"
-                     [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
-              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                <div *ngIf="f.title.errors.required">Title is required</div>
+              <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">Update</button>
+                <img *ngIf="loading"
+                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="points">Points</label>
-              <input type="number" formControlName="points" class="form-control" value="{{editItem?.points}}"
-                     [ngClass]="{ 'is-invalid': submitted && f.points.errors }"/>
-              <div *ngIf="submitted && f.points.errors" class="invalid-feedback">
-                <div *ngIf="f.points.errors.required">Points are required</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <input type="text" formControlName="description" class="form-control" value="{{editItem?.description}}"
-                     [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
-              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="image">Image</label>
-              <input type="text" formControlName="image" class="form-control" value="{{editItem?.image}}"
-                     [ngClass]="{ 'is-invalid': submitted && f.image.errors }"/>
-              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-              </div>
-            </div>
-            <div class="form-group">
-              <button [disabled]="loading" class="btn btn-primary">Update</button>
-              <img *ngIf="loading"
-                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 
