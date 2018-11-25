@@ -30,7 +30,6 @@ export class RewardsAdminComponent implements OnInit {
 
   ngOnInit() {
     if (this.auth.checkPermission('admin')) {
-      console.log('ja');
     } else {
       this.router.navigate(['login']);
     }
@@ -54,24 +53,27 @@ export class RewardsAdminComponent implements OnInit {
   get f() {
     return this.editForm.controls;
   }
+
   get c() {
     return this.addForm.controls;
   }
 
   getAllRewards() {
     this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
-    console.log(this.rewardsService.getAllRewards());
   }
+
   remove(item) {
     this.editItem = item;
     this.rewardsService.deleteReward(item.id).then(data => {
       this.rewardsList.splice(this.rewardsList.indexOf(this.editItem), 1);
     });
   }
+
   add() {
     this.addmodal = true;
     this.editmodal = false;
   }
+
   edit(item) {
     this.addmodal = false;
     this.editItem = item;
@@ -82,8 +84,8 @@ export class RewardsAdminComponent implements OnInit {
       description: [this.editItem.description],
       image: [this.editItem.image]
     });
-    console.log(this.editItem);
   }
+
   onSubmitAdd() {
     this.submitted = true;
 
@@ -95,7 +97,12 @@ export class RewardsAdminComponent implements OnInit {
     if (image == null) {
       image = '';
     }
-    const addItem = {title: this.c.title.value, description: this.c.description.value, image: image, points: this.c.points.value};
+    const addItem = {
+      title: this.c.title.value,
+      description: this.c.description.value,
+      image: image,
+      points: this.c.points.value
+    };
     this.rewardsService.addReward(addItem).then(data => {
       this.loading = false;
       this.addmodal = false;
@@ -109,6 +116,7 @@ export class RewardsAdminComponent implements OnInit {
       });
     });
   }
+
   onSubmitEdit() {
     this.submitted = true;
 
@@ -129,11 +137,10 @@ export class RewardsAdminComponent implements OnInit {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;
-    } );
+    });
   }
 
   filter(filter) {
-    // console.log(filter);
     if (filter == 1) {
       if (this.hideItems == true) {
         this.rewardsListByName.sort((a, b) => {
