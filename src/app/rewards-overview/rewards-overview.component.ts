@@ -21,7 +21,6 @@ export class RewardsOverviewComponent implements OnInit {
   }
 
   filter(filter) {
-    // console.log(filter);
     if (filter == 1) {
       if (this.hideItems == true) {
         this.rewardsListByName.sort((a, b) => {
@@ -72,7 +71,6 @@ export class RewardsOverviewComponent implements OnInit {
 
   getAllRewards() {
     this.rewardsService.getAllRewards().then(data => this.rewardsList = data);
-    console.log(this.rewardsList);
   }
 
 }
