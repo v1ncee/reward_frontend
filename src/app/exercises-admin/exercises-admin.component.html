@@ -2,21 +2,21 @@
 
   <div class="container px-0">
     <div class="form-group d-flex flex-sm-row flex-column col-12">
-      <div class="d-flex flex-row  w-100 fg">
+      <div class="d-flex flex-row  w-100 fg mt-2">
         <input id="exercise" type="text" class="form-control reward-search-input input-50"
                placeholder="Search an exercise..."
                #exerciseSearch
                (keyup)="search(exerciseSearch.value)"/>
         <button class="btn reward-search-button input-50">Search</button>
       </div>
-      <select name="filter-rewards" id="filter-rewards" class="input-50 fg"
+      <select name="filter-rewards" id="filter-rewards" class="input-50 fg mt-2"
               #filterExercises
               (change)="filter(filterExercises.value)">
         <option value="0" selected hidden>&nbsp; Filter op:</option>
         <option value="1">Punten (laag -> hoog)</option>
         <option value="2">Punten (hoog -> laag)</option>
       </select>
-      <button class="btn reward-search-button input-50 fg" (click)="add()">Add</button>
+      <button class="btn reward-search-button input-50 fg mt-2" (click)="add()">Add</button>
     </div>
 
     <div class="rewards">

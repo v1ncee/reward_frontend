@@ -22,10 +22,19 @@ export class AuthenticationService {
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+
+          // if (user.role === 'admin') {
+          //   this.router.navigate(['admin/applications-admin']);
+          //   console.log('admin login');
+          // } else if (user.role === 'user') {
+          //   this.router.navigate(["user/exercises"]);
+          //   console.log('user login');
+          // }
         }
 
-        this.isLogged$ = of(true);
-        console.log(this.isLogged$);
+        console.log('mooi');
+
+
 
         return user;
       }));

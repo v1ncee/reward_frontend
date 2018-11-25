@@ -26,7 +26,6 @@ export class ExercisesAdminComponent implements OnInit {
 
   ngOnInit() {
     if (this.auth.checkPermission('admin')) {
-      console.log('ja');
     } else {
       this.router.navigate(['login']);
     }
