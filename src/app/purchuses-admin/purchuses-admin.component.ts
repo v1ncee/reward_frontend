@@ -25,22 +25,16 @@ export class PurchusesAdminComponent implements OnInit {
   getAllUsersRewards() {
     this.userService.getAll().then(data => {
       this.usersList = data;
-      // console.log(data);
       for (let user of data) {
         let username = user.firstName + ' ' + user.lastName;
-        // console.log(username);
         for (let reward of user.purchases) {
-          // console.log(reward);
           this.rewardService.getRewardById(reward).then( data => {
-            // console.log(data.title);
-            this.rewardsList.push({user: username, title: data.title, description: data.description, points: data.points });
+            this.rewardsList.push({user: username, title: data['title'], description: data['description'], points: data['points'] });
           });
         }
 
       }
     });
-    // console.log(this.usersList);
-
   }
 
 }
