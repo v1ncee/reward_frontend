@@ -39,7 +39,7 @@ export class LeaderboardComponent implements OnInit {
           this.firstPlace = this.userList[0];
           this.secondPlace = this.userList[1];
           this.thirdPlace = this.userList[2];
-          this.userList.splice(0, 2);
+          this.userList.splice(0, 3);
         }
       );
 
