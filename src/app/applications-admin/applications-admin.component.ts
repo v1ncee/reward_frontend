@@ -44,20 +44,27 @@ export class ApplicationsAdminComponent implements OnInit {
       this.user.points += item.exercise.points;
       this.user.leaderBoardPoints += item.exercise.points;
       this.userService.update(this.user);
-    })
+      this.exercisesClaimService.deleteExerciseClaim(item).then(() => console.log('claim verwijderd'));
+      this.exercisesClaimsList.splice(this.exercisesClaimsList.indexOf(this.exerciseClaim), 1);
+    });
   }
 
   decline(item) {
+    this.exerciseClaim = item;
     if (item.status === 'CLAIMED') {
       this.userService.getById(item.user.id).then(data => this.user = data).then(() => {
         this.user.points -= item.exercise.points;
         this.user.leaderBoardPoints -= item.exercise.points;
         this.userService.update(this.user);
-      })
+        this.exercisesClaimService.deleteExerciseClaim(item).then(() => console.log('claim verwijderd'));
+        this.exercisesClaimsList.splice(this.exercisesClaimsList.indexOf(this.exerciseClaim), 1);
+      });
     }
     item.status = 'NOT-CLAIMED';
     this.exerciseClaim = item;
     this.exercisesClaimService.updateExerciseClaim(item.id, this.exerciseClaim).then(data => {
+      this.exercisesClaimService.deleteExerciseClaim(item).then(() => console.log('claim verwijderd'));
+      this.exercisesClaimsList.splice(this.exercisesClaimsList.indexOf(this.exerciseClaim), 1);
     });
   }
 }
