@@ -101,6 +101,12 @@ export class RewardsAdminComponent implements OnInit {
       this.addmodal = false;
       this.submitted = false;
       this.rewardsList.push(data);
+      this.addForm = this.formBuilder.group({
+        title: ['', Validators.required],
+        points: [0, Validators.required],
+        description: [''],
+        image: ['']
+      });
     });
   }
   onSubmitEdit() {

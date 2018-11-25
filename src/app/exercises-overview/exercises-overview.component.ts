@@ -66,6 +66,9 @@ export class ExercisesOverviewComponent implements OnInit {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
+      this.addForm = this.formBuilder.group({
+        comment: ['', Validators.required]
+      });
     });
   }
 
