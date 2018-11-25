@@ -13,6 +13,8 @@
     </div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/applications-admin" routerLinkActive="active"><i
       class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/purchases-admin" routerLinkActive="active"><i
+      class="fas fa-shopping-cart"></i><span [ngbCollapse]="!open">Reward purchases</span></div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/rewards-admin" routerLinkActive="active"><i
       class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/exercises-admin" routerLinkActive="active"><i

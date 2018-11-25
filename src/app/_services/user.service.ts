@@ -9,7 +9,9 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get(`${environment.apiUrl}/users`).toPromise();
+    return this.http.get<any[]>(`${environment.apiUrl}/users`).toPromise().then(data => {
+      return data;
+    });
   }
 
   getById(id: number) {

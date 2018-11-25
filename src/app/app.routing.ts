@@ -41,7 +41,7 @@ const appRoutes: Routes = [
       {path: 'applications-admin', component: ApplicationsAdminComponent, canActivate: [AuthGuard]},
       {path: 'exercises-admin', component: ExercisesAdminComponent, canActivate: [AuthGuard]},
       {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
-      {path: 'purchuses-admin', component: PurchusesAdminComponent, canActivate: [AuthGuard]},
+      {path: 'purchases-admin', component: PurchusesAdminComponent, canActivate: [AuthGuard]},
       {path: '**', redirectTo: 'exercises-admin'},
     ]
   },
