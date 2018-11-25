@@ -24,6 +24,7 @@ import {RewardsDetailComponent} from './rewards-detail/rewards-detail.component'
 import {ExercisesDetailComponent} from './exercises-detail/exercises-detail.component';
 import {ExercisesAdminComponent} from './exercises-admin/exercises-admin.component';
 import {LeaderboardComponent} from './leaderboard/leaderboard.component';
+import { PurchusesAdminComponent } from './purchuses-admin/purchuses-admin.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {LeaderboardComponent} from './leaderboard/leaderboard.component';
     ExercisesDetailComponent,
     ExercisesAdminComponent,
     LeaderboardComponent,
+    PurchusesAdminComponent,
   ],
   providers: [
     AuthGuard,

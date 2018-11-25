@@ -27,9 +27,9 @@ export class ApiPurchasesService {
 
             this.http.get(this.ROOT_URL + "/rewards/" + this.user.purchases[i]) //id van reward
               .toPromise().then(data => {
-              lijst.push(data)
+              lijst.push(data);
 
-            })
+            });
           }
         }
       )
