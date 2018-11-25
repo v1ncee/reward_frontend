@@ -5,6 +5,7 @@ import {ApiExercisesClaimService} from '../_services/api-exercises-claim.service
 import {ApiExercisesService} from '../_services/api-exercises.service';
 import {UserService} from '../_services/user.service';
 import {ExerciseClaim} from '../_models/exerciseClaim';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-applications-admin',
@@ -12,6 +13,7 @@ import {ExerciseClaim} from '../_models/exerciseClaim';
   styleUrls: ['./applications-admin.component.sass']
 })
 export class ApplicationsAdminComponent implements OnInit {
+  user;
   exercisesClaimsList;
   exerciseClaim: ExerciseClaim;
   constructor(private auth: AuthenticationService, private userService: UserService, private exercisesClaimService: ApiExercisesClaimService, private exercisesService: ApiExercisesService,  private router: Router) { }
@@ -41,6 +43,12 @@ export class ApplicationsAdminComponent implements OnInit {
     this.exercisesClaimService.updateExerciseClaim(item.id, this.exerciseClaim).then(data => {
       console.log(data);
     });
+
+    this.userService.getById(item.user.id).then(data => this.user = data).then(() => {
+      this.user.points += item.exercise.points;
+      this.user.leaderBoardPoints += item.exercise.points;
+      this.userService.update(this.user);
+    })
   }
   decline(item) {
     item.status = 'NOT-CLAIMED';

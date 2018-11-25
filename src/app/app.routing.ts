@@ -44,7 +44,6 @@ const appRoutes: Routes = [
       {path: '**', redirectTo: 'exercises-admin'},
     ]
   },
-  // {path: '', component: ExercisesAdminComponent, canActivate: [AuthGuard], data: { roles: ['admin']},},
   {path: '', component: ExercisesOverviewComponent, canActivate: [AuthGuard], data: { roles: ['user']},},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
