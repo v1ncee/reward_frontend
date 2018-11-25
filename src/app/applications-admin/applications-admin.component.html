@@ -4,13 +4,13 @@
       <tr>
         <th>User:</th>
         <th>Exercise:</th>
-        <th>Comment:</th>
+        <th class="w-100">Comment:</th>
         <th>Status:</th>
         <th colspan="2">Actions</th>
       </tr>
       <tr *ngFor="let item of exercisesClaimsList" class="bg-white">
-        <td>{{item?.user?.username}} {{item?.user?.lastName}}</td>
-        <td>{{item?.exercise?.title}} ({{item?.exercise?.points}})</td>
+        <td>{{item?.user?.username}}&nbsp;{{item?.user?.lastName}}</td>
+        <td>{{item?.exercise?.title}}&nbsp;({{item?.exercise?.points}})</td>
         <td>{{item?.comment}}</td>
         <td>{{item?.status}}</td>
         <td><i class="far fa-check-circle text-success" (click)="accept(item)"></i></td>
