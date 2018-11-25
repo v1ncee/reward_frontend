@@ -1,10 +1,12 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 import {ApiRewardsService} from '../_services/api-rewards.service';
 import {ApiExercisesService} from '../_services/api-exercises.service';
 import {ApiExercisesClaimService} from '../_services/api-exercises-claim.service';
 import {Exercise} from '../_models/exercise';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {AuthenticationService} from "../_services";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-exercises-overview',
@@ -23,22 +25,29 @@ export class ExercisesOverviewComponent implements OnInit {
   submitted = false;
   hideItems = false;
 
-  constructor(private exercisesService: ApiExercisesService, private exercisesClaimService: ApiExercisesClaimService, private formBuilder: FormBuilder) {
+  constructor(private exercisesService: ApiExercisesService, private exercisesClaimService: ApiExercisesClaimService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
+    if (this.auth.checkPermission('admin')) {
+      this.router.navigate(['admin/applications-admin']);
+    }
+
     this.getAllExercises();
     this.addForm = this.formBuilder.group({
       comment: ['', Validators.required]
     });
   }
+
   register(item) {
     this.editItem = item;
     this.addmodal = true;
   }
+
   get c() {
     return this.addForm.controls;
   }
+
   onSubmitAdd() {
     this.submitted = true;
 
@@ -50,11 +59,11 @@ export class ExercisesOverviewComponent implements OnInit {
     const jwtHelper = new JwtHelperService();
     let id;
     if (localStorage.getItem('currentUser')) {
-       id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
+      id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
     }
     const exerciseClaim = {user: id, exercise: this.editItem.id, comment: this.editItem.comment};
     console.log(exerciseClaim);
-    this.exercisesClaimService.addExerciseClaim(exerciseClaim).then( data => {
+    this.exercisesClaimService.addExerciseClaim(exerciseClaim).then(data => {
       this.loading = false;
       this.addmodal = false;
       this.submitted = false;
@@ -64,6 +73,7 @@ export class ExercisesOverviewComponent implements OnInit {
   toggleClass(item) {
     item.active = !item.active;
   }
+
   filter(filter) {
     // console.log(filter);
     if (filter == 1) {

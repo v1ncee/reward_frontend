@@ -11,24 +11,24 @@
       <i class="fas fa-bars text-white" [ngbCollapse]="open"></i>
       <i class="fas fa-times text-white" [ngbCollapse]="!open"></i>
     </div>
-    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/applications-admin" routerLinkActive="active"><i
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/applications-admin" routerLinkActive="active"><i
       class="fas fa-file-contract"></i><span [ngbCollapse]="!open">Application</span></div>
-    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/rewards-admin" routerLinkActive="active"><i
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/rewards-admin" routerLinkActive="active"><i
       class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
-    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/exercises-admin" routerLinkActive="active"><i
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/exercises-admin" routerLinkActive="active"><i
       class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
-    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/leaderboard" routerLinkActive="active"><i
+    <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="admin/leaderboard" routerLinkActive="active"><i
       class="fas fa-trophy"></i><span [ngbCollapse]="!open">Leaderboard</span></div>
     <div *ngIf="authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
       class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
 
-    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/rewards" routerLinkActive="active"><i
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="user/rewards" routerLinkActive="active"><i
       class="fas fa-medal"></i><span [ngbCollapse]="!open">Rewards</span></div>
-    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/exercises" routerLinkActive="active"><i
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="user/exercises" routerLinkActive="active"><i
       class="fas fa-dumbbell"></i><span [ngbCollapse]="!open">Exercises</span></div>
-    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/purchases" routerLinkActive="active"><i
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="user/purchases" routerLinkActive="active"><i
       class="fas fa-history"></i><span [ngbCollapse]="!open">History</span></div>
-    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/leaderboard" routerLinkActive="active"><i
+    <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="user/leaderboard" routerLinkActive="active"><i
       class="fas fa-trophy"></i><span [ngbCollapse]="!open">Leaderboard</span></div>
     <div *ngIf="!authCheck && userCheck" (click)="open = false" class="nav-icon" routerLink="/logout" routerLinkActive="active"><i
       class="fas fa-unlock"></i><span [ngbCollapse]="!open">Logout</span></div>
