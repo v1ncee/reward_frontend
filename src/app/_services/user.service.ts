@@ -13,7 +13,6 @@ export class UserService {
   }
 
   getById(id: number) {
-    console.log(environment.apiUrl + "/users/" + id)
     return this.http.get(environment.apiUrl + "/users/" + id)
       .toPromise().then(data => {
         return data;
@@ -27,7 +26,7 @@ export class UserService {
   update(user) {
     const url = environment.apiUrl + "/users/" + user.id;
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    this.http.put(url, user, httpOptions).toPromise().then(() => console.log("user geupdate"));
+    this.http.put(url, user, httpOptions).toPromise();
   }
 
   delete(id: number) {

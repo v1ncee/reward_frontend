@@ -26,7 +26,6 @@ export class NavbarComponent implements DoCheck, OnInit {
     const change = this.differ.diff(this);
     if (change) {
       change.forEachChangedItem(item => {
-        console.log('item changed', item);
         if (item.key == 'userStorage') {
           this.getUser();
           this.authChecking();
@@ -36,7 +35,6 @@ export class NavbarComponent implements DoCheck, OnInit {
   }
 
   ngOnInit() {
-    console.log("navbar laadt");
     this.getUser();
     this.authChecking();
   }

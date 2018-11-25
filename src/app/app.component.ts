@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthenticationService, private ref: ChangeDetectorRef, private authGuard: AuthGuard) {
     this.authGuard.isLogged$.subscribe(data => {
       this.isLogged$ = of(data);
-      console.log(data);
     });
   }
 
