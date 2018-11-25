@@ -23,7 +23,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getAllFromFourth() {
-    this.userService.getAll().toPromise()
+    this.userService.getAll()
       .then(data => this.usersAdminList = data)
       .then(() => {
           this.usersAdminList.sort((a, b) => {
