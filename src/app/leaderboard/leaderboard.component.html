@@ -4,17 +4,17 @@
       <div class="podium col-lg-6 col-md-8 col-sm-12 px-0">
         <div class="scoreboard">
           <p class="font-weight-bold mb-0">{{secondPlace?.firstName}}</p>
-          <p>points: {{secondPlace?.points}}</p>
+          <p>points: {{secondPlace?.leaderBoardPoints}}</p>
           <div class="tweede"><img src="../../assets/images/tweede.png" alt=""></div>
         </div>
         <div class="scoreboard">
           <p class="font-weight-bold mb-0">{{firstPlace?.firstName}}</p>
-          <p>points: {{firstPlace?.points}}</p>
+          <p>points: {{firstPlace?.leaderBoardPoints}}</p>
           <div class="eerste"><img src="../../assets/images/eerste.png" alt=""></div>
         </div>
         <div class="scoreboard">
           <p class="font-weight-bold mb-0">{{thirdPlace?.firstName}}</p>
-          <p>points: {{thirdPlace?.points}}</p>
+          <p>points: {{thirdPlace?.leaderBoardPoints}}</p>
           <div class="derde"><img src="../../assets/images/derde.png" alt=""></div>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <tr *ngFor="let item of userList; let i = index" class="bg-white">
           <td>{{i+4}}</td>
           <td>{{item?.firstName}} {{item?.lastName}}</td>
-          <td>{{item?.points}}</td>
+          <td>{{item?.leaderBoardPoints}}</td>
         </tr>
       </table>
     </div>
