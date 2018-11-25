@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -9,7 +9,8 @@ export class ApiExercisesClaimService {
 
   readonly URLExercises = environment.apiUrl + '/claimexercise/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllExercisesClaims() {
     return this.http.get(this.URLExercises)
@@ -28,18 +29,21 @@ export class ApiExercisesClaimService {
   updateExerciseClaim(id, exercise) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })};
-    console.log('ok');
-    return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise().then(() => console.log('exercise Claim updated'));
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise();
   }
+
   addExerciseClaim(item) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })};
-    return this.http.post(this.URLExercises, item, httpOptions).toPromise().then(() => console.log('exercise Claim added'));
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.URLExercises, item, httpOptions).toPromise();
   }
+
   deleteExerciseClaim(item) {
     return this.http.delete(this.URLExercises + item).toPromise();
   }

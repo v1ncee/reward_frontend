@@ -62,7 +62,6 @@ export class ExercisesOverviewComponent implements OnInit {
       id = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).sub;
     }
     const exerciseClaim = {user: id, exercise: this.editItem.id, comment: this.editItem.comment};
-    console.log(exerciseClaim);
     this.exercisesClaimService.addExerciseClaim(exerciseClaim).then(data => {
       this.loading = false;
       this.addmodal = false;
@@ -75,7 +74,6 @@ export class ExercisesOverviewComponent implements OnInit {
   }
 
   filter(filter) {
-    // console.log(filter);
     if (filter == 1) {
       if (this.hideItems == true) {
         this.exercisesListByName.sort((a, b) => {
@@ -126,6 +124,5 @@ export class ExercisesOverviewComponent implements OnInit {
 
   getAllExercises() {
     this.exercisesService.getAllExercises().then(data => this.exercisesList = data);
-    // console.log(this.exercisesList);
   }
 }

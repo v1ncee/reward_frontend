@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -9,7 +9,8 @@ export class ApiExercisesService {
 
   readonly URLExercises = environment.apiUrl + '/exercises/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllExercises() {
     return this.http.get(this.URLExercises)
@@ -28,17 +29,19 @@ export class ApiExercisesService {
   updateExercise(id, exercise) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })};
-    return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise().then(() => console.log('exercise updated'));
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put(this.URLExercises + id, exercise, httpOptions).toPromise();
   }
+
   addExercise(exercise) {
     return this.http.post(this.URLExercises, exercise).toPromise().then(data => {
       return data;
     });
   }
+
   deleteExercise(id) {
-    console.log(id);
     return this.http.delete(this.URLExercises + id).toPromise();
   }
 }

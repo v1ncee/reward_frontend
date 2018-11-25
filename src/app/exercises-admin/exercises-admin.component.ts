@@ -8,7 +8,7 @@ import {Exercise} from '../_models/exercise';
 @Component({
   selector: 'app-admin-exercises',
   templateUrl: './exercises-admin.component.html',
-  styleUrls: ['./exercises-admin.component.sass']
+  styleUrls: []
 })
 export class ExercisesAdminComponent implements OnInit {
   editForm: FormGroup;
@@ -22,7 +22,9 @@ export class ExercisesAdminComponent implements OnInit {
   exercisesList;
   exercisesListByName;
   hideItems = false;
-  constructor(private exercisesService: ApiExercisesService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) { }
+
+  constructor(private exercisesService: ApiExercisesService, private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
+  }
 
   ngOnInit() {
     if (this.auth.checkPermission('admin')) {
@@ -49,6 +51,7 @@ export class ExercisesAdminComponent implements OnInit {
   get f() {
     return this.editForm.controls;
   }
+
   get c() {
     return this.addForm.controls;
   }
@@ -56,16 +59,19 @@ export class ExercisesAdminComponent implements OnInit {
   getAllExercises() {
     this.exercisesService.getAllExercises().then(data => this.exercisesList = data);
   }
+
   remove(item) {
     this.editItem = item;
     this.exercisesService.deleteExercise(item.id).then(data => {
       this.exercisesList.splice(this.exercisesList.indexOf(this.editItem), 1);
     });
   }
+
   add() {
     this.addmodal = true;
     this.editmodal = false;
   }
+
   edit(item) {
     this.addmodal = false;
     this.editItem = item;
@@ -76,8 +82,8 @@ export class ExercisesAdminComponent implements OnInit {
       description: [this.editItem.description],
       image: [this.editItem.image]
     });
-    console.log(this.editItem);
   }
+
   onSubmitAdd() {
     this.submitted = true;
 
@@ -89,7 +95,13 @@ export class ExercisesAdminComponent implements OnInit {
     if (image == null) {
       image = '';
     }
-    const addItem = {title: this.c.title.value, description: this.c.description.value, points: this.c.points.value, image: image, comment: ''};
+    const addItem = {
+      title: this.c.title.value,
+      description: this.c.description.value,
+      points: this.c.points.value,
+      image: image,
+      comment: ''
+    };
     this.exercisesService.addExercise(addItem).then(data => {
       this.loading = false;
       this.addmodal = false;
@@ -97,6 +109,7 @@ export class ExercisesAdminComponent implements OnInit {
       this.exercisesList.push(data);
     });
   }
+
   onSubmitEdit() {
     this.submitted = true;
 
@@ -114,16 +127,14 @@ export class ExercisesAdminComponent implements OnInit {
     this.editItem.points = this.f.points.value;
     this.editItem.image = image;
     this.editItem.comment = 'test';
-    console.log(this.editItem);
     this.exercisesService.updateExercise(this.editItem.id, this.editItem).then(data => {
       this.loading = false;
       this.editmodal = false;
       this.submitted = false;
-    } );
+    });
   }
 
   filter(filter) {
-    // console.log(filter);
     if (filter == 1) {
       if (this.hideItems == true) {
         this.exercisesListByName.sort((a, b) => {
@@ -151,7 +162,6 @@ export class ExercisesAdminComponent implements OnInit {
   search(name, filter) {
     if (name !== '') {
       this.hideItems = true;
-      // this.openBreweryItems$ = of(true);
       this.exercisesListByName = [];
 
       for (const x in this.exercisesList) {

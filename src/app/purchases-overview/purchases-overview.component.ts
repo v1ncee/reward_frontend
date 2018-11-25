@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ApidbService } from '../services/apidb.service';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 import {UserService} from "../_services";
 import {of} from "rxjs/index";
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {ApiPurchasesService} from "../_services/api-purchases.service";
 
 @Component({
   selector: 'app-puchases',
@@ -16,7 +15,8 @@ export class PurchasesOverviewComponent implements OnInit {
   loading = false;
   purchases;
   user$: Observable<any>;
-  constructor(private apidbService: ApidbService, private userService: UserService) {
+
+  constructor(private apidbService: ApiPurchasesService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -33,7 +33,9 @@ export class PurchasesOverviewComponent implements OnInit {
   getPurchases() {
     this.loading = true;
     this.apidbService.getOverviewPurchases()
-      .then( data => this.purchases = data)
-      .then(data => {console.log(data); this.loading = false;});
+      .then(data => this.purchases = data)
+      .then(data => {
+        this.loading = false;
+      });
   }
 }

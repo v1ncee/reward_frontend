@@ -9,7 +9,7 @@ import {Reward} from '../_models/reward';
 @Component({
   selector: 'app-rewards-admin',
   templateUrl: './rewards-admin.component.html',
-  styleUrls: ['./rewards-admin.component.sass']
+  styleUrls: []
 })
 export class RewardsAdminComponent implements OnInit {
 

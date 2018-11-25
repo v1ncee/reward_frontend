@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {UserService} from "../../app/_services/user.service";
-
 import {environment} from '../../environments/environment';
 import {Observable, of} from "rxjs/index";
 import {Router} from "@angular/router";
@@ -11,7 +10,6 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AuthenticationService {
   isLogged$: Observable<boolean>;
-  times;
   user;
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {
@@ -21,13 +19,11 @@ export class AuthenticationService {
     const jwtHelper = new JwtHelperService();
     const currentMonth = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).month;
 
-    if (currentMonth != today.getMonth() + 1) { 
-      console.log(currentMonth + " is NOT equal to " + (today.getMonth() + 1));
+    if (currentMonth != today.getMonth() + 1) {
       return false;
-     } else { 
-       console.log(currentMonth + " is equal to " + (today.getMonth() + 1));
-       return true;
-     }
+    } else {
+      return true;
+    }
   }
 
   reset() {
@@ -39,7 +35,6 @@ export class AuthenticationService {
     this.userService.getById(id)
       .then(data => this.user = data)
       .then(() => {
-        console.log(this.user.leaderBoardPoints);
         this.user.leaderBoardPoints = 0;
         this.user.leaderBoardMonth = today.getMonth() + 1;
         this.userService.update(this.user);
@@ -50,7 +45,6 @@ export class AuthenticationService {
   }
 
 
-
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, {username: username, password: password})
       .pipe(map(user => {
@@ -59,26 +53,11 @@ export class AuthenticationService {
           let today = new Date();
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
-          if (this.checkMonth(today)){
-            console.log("Maanden komen overeen");
+          if (this.checkMonth(today)) {
           } else {
-            console.log("Maanden komen NIET overeen");
             this.reset();
           }
-
-          // if (user.role === 'admin') {
-          //   this.router.navigate(['admin/applications-admin']);
-          //   console.log('admin login');
-          // } else if (user.role === 'user') {
-          //   this.router.navigate(["user/exercises"]);
-          //   console.log('user login');
-          // }
         }
-
-        console.log('mooi');
-
-
-
         return user;
       }));
   }
@@ -87,13 +66,7 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.isLogged$ = of(false);
-    // if (this.times == 0) {
     this.router.navigate(["login"]);
-    //location.reload();
-
-    // } else {
-    //   this.times = 0;
-    // }
   }
 
   isLoggedIn() {
@@ -122,7 +95,6 @@ export class AuthenticationService {
     const jwtHelper = new JwtHelperService();
     const permissions = jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token).permissions;
 
-    console.log(permissions[0]);
     return permissions[0] === permission;
   }
 }

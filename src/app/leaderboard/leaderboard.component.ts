@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from "../_services/user.service";
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../_services/user.service";
 
 @Component({
   selector: 'app-leaderboard',
@@ -26,9 +26,11 @@ export class LeaderboardComponent implements OnInit {
     this.userService.getAll().toPromise()
       .then(data => this.usersAdminList = data)
       .then(() => {
-        this.usersAdminList.sort((a,b) => {return b.leaderBoardPoints - a.leaderBoardPoints;} );
-       
-        
+          this.usersAdminList.sort((a, b) => {
+            return b.leaderBoardPoints - a.leaderBoardPoints;
+          });
+
+
           for (const x in this.usersAdminList) {
             if ((this.usersAdminList[x]['role'] === 'user')) {
               this.userList.push(this.usersAdminList[x]);
@@ -38,8 +40,7 @@ export class LeaderboardComponent implements OnInit {
           this.secondPlace = this.userList[1];
           this.thirdPlace = this.userList[2];
           this.userList.splice(0, 2);
-          console.log(this.userList);
-      }
+        }
       );
 
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ApiExercisesService} from "../_services/api-exercises.service";
 
@@ -20,9 +20,7 @@ export class ExercisesDetailComponent implements OnInit {
       this.exerciseId = params.get('id');
     });
 
-    console.log(this.exerciseId);
-
-    this.exercisesService.getExerciseById(this.exerciseId).then(data => this.exercise = data).then(() => console.log(this.exercise));
+    this.exercisesService.getExerciseById(this.exerciseId).then(data => this.exercise = data);
   }
 
 }
