@@ -45,7 +45,6 @@ export class ApiExercisesClaimService {
   }
 
   deleteExerciseClaim(item) {
-
-    return this.http.delete(this.URLExercises + item.id).toPromise().then(data => console.log('verwijderd'));
+    return this.http.delete(this.URLExercises + item.id).toPromise();
   }
 }
