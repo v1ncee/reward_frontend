@@ -51,6 +51,13 @@ export class ApplicationsAdminComponent implements OnInit {
     })
   }
   decline(item) {
+    if (item.status === 'CLAIMED') {
+      this.userService.getById(item.user.id).then(data => this.user = data).then(() => {
+        this.user.points -= item.exercise.points;
+        this.user.leaderBoardPoints -= item.exercise.points;
+        this.userService.update(this.user);
+      })
+    }
     item.status = 'NOT-CLAIMED';
     this.exerciseClaim = item;
     this.exercisesClaimService.updateExerciseClaim(item.id, this.exerciseClaim).then(data => {
