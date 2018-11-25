@@ -13,7 +13,6 @@ import {ExercisesDetailComponent} from './exercises-detail/exercises-detail.comp
 import {ApplicationsAdminComponent} from './applications-admin/applications-admin.component';
 import {ExercisesAdminComponent} from './exercises-admin/exercises-admin.component';
 import {LeaderboardComponent} from './leaderboard/leaderboard.component';
-import {RoleGuardService} from "./_guards/role-guard.service";
 
 const appRoutes: Routes = [
   // otherwise redirect to home
