@@ -41,10 +41,10 @@ export class AuthenticationService {
       .then(() => {
         console.log(this.user.leaderBoardPoints);
         this.user.leaderBoardPoints = 0;
-        this.user.month = today.getMonth();
+        this.user.leaderBoardMonth = today.getMonth() + 1;
         this.userService.update(this.user);
         userLocalStorage.leaderBoardPoints = this.user.leaderBoardPoints;
-        userLocalStorage.month = this.user.month;
+        userLocalStorage.leaderBoardMonth = this.user.leaderBoardMonth;
         localStorage.setItem('currentUser', JSON.stringify(userLocalStorage));
       });
   }

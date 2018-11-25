@@ -26,8 +26,9 @@ export class LeaderboardComponent implements OnInit {
     this.userService.getAll().toPromise()
       .then(data => this.usersAdminList = data)
       .then(() => {
-        this.usersAdminList.sort((a,b) => {return b.points - a.points;} );
-
+        this.usersAdminList.sort((a,b) => {return b.leaderBoardPoints - a.leaderBoardPoints;} );
+       
+        
           for (const x in this.usersAdminList) {
             if ((this.usersAdminList[x]['role'] === 'user')) {
               this.userList.push(this.usersAdminList[x]);
